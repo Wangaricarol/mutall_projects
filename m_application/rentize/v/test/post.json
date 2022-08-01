@@ -1,0 +1,7 @@
+{
+    "url": "http:\/\/localhost\/tracker\/v\/code\/index.php",
+    "class": "questionnaire",
+    "cargs": "[[[\"mutall_users\",\"application\",[],\"id\",\"tracker\"],[\"mutall_users\",\"user\",[],\"email\",\"camilus@gmail.com\"],[\"mutall_tracker\",\"developer\",[0],\"email\",\"camilus@gmail.com\"],[\"mutall_users\",\"subscription\",[0],\"is_valid\",true],[\"mutall_users\",\"player\",[0],\"is_valid\",true],[\"mutall_users\",\"role\",[0],\"id\",\"developer\"]]]",
+    "method": "load_common",
+    "margs": "[\"log.xml\"]"
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+    <title>EVENT</title>
+    <style>
+        * {
+            font-size: 30px;
+            margin: 5px;
+        }
+    
+        label {
+            display: block;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <center>
+        <h1>EVENT</h1>
+    </center>
+<!-- label for choosing a language -->
+<fieldset>
+    <label for="language">
+        Choose a language: 
+        <select id="English">
+            <option value="eng">English</option>
+            <option value="kisw">Kiswahili</option>
+            <option value="kikuyu">Kikuyu</option> 
+            <option value="masai">Maasai</option>
+        </select>
+    </label>
+    <label>
+        Send-to:
+        <select id="send">
+           <option value ="send"></option>
+        </select>
+    </label>   
+    <!-- label for the message -->
+        <label>Enter message:
+            <textarea></textarea>
+        </label>
+        <fieldset>
+            <legend>Is the message associated with an event:</legend>
+            <label>
+                <input type="radio" id="yes" name="event">
+                Yes
+                <button type="button">create-event</button>
+            </label>
+
+            <label>
+                <input type="radio" id="no" name="event">
+                No
+            </label>
+        </fieldset>
+</fieldset>    
+</body>

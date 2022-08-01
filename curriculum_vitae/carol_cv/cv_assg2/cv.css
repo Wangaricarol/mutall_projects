@@ -1,0 +1,103 @@
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        font-size: 18px;  
+        background-color: beige;
+        overflow-y: hidden;
+    }
+    
+    .header {
+        display: flex;
+        position: sticky;
+    }
+    img {
+        width: 120px;
+        height: 120px;
+        margin-top: 2px;
+        margin-left: 10px;
+        border-radius: 15%;
+    }
+    /* setting the alignment of the navigation section */
+    .information {
+        display: flex;
+    }
+    /* aligning the curriculum vitae position on the cv */
+    .cv{
+        margin-left: 60px;
+        margin-top: 40px;
+    }
+    
+    /* set the nav tag to be displayed in block */
+    .atag{
+        display: block;
+    }
+    /* styling the navi section */
+    #navi {
+        background-color: antiquewhite;
+        padding-left: 4%;
+        line-height: 1.5;
+        display: block;
+    }
+    /* styling the content section that is holding the 
+    entire content body section(pd,bio,edu,exper,interest,ref */
+    #content {
+        flex: 80%;
+        background-color: aliceblue;
+        overflow-y: scroll;
+        height: 85vh;
+        margin: 1px;
+        padding-left: 4%;
+    }
+    /* aligning the address,email.. */
+    .about{
+        display: block;
+        width: 25%;
+    }
+/* styling all the sub-headings in the content*/
+    .ration{
+        text-decoration: underline;
+        margin-right: 20px;
+    }
+/* styling the table section in the in education */
+    table {
+        font-size: 20px;
+    }
+    tr:nth-child(even) {
+        background-color: gainsboro;
+    }
+
+    /* alligning the references */
+   .lines{
+        display: block;
+        width: 20%;
+    }
+
+    /* setting a media query */
+    @media screen and (max-width: 600px) {
+        body {
+            background-color: olive;
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+        }
+        #information{
+            flex-direction: column;
+            margin-bottom: 20px
+        }
+        /* Hide the panel when viewing in mobile view */
+        #navi {
+            display: none;
+        }
+        
+        /* #menuToggler {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-image: url(pics/menuToggler.svg);
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            background-position: center center;
+        } */
+    }

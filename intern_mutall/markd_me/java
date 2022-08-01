@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>My First java script</h2>
+        <button type="button"
+        onclick="document.getElementById('demo').innerHTML = Date()">
+        </button>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background-color: honeydew;
+}
+
+#con {
+    background-color: gainsboro;
+    display: flex;
+    flex: 20% 80%;
+}
+
+img {
+    width: 40%;
+    height: 10%;
+    border-radius: 10%;
+}
+
+.profile {
+    font-size: 20px;
+    background-color: bisque;
+    padding: 1%;
+    flex: 20%;
+}
+
+.content {
+    padding: 2%;
+    width: max-content;
+    overflow-y: scroll;
+    flex: 80%;
+    font-size: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: goldenrod;
+}
+
+table {
+    font-size: 24px;
+}
+
+#lines {
+    width: 200px;
+    margin: 10px;
+}

@@ -1,0 +1,116 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+    grid-template-columns: 1fr 5fr;
+}
+
+#header {
+    /* starts on the first horizontal line, and ends on the third horizontal line */
+    grid-column: 1/8;
+    /* starts on the first horizontal line, and ends on the second horizontal line */
+    grid-row: 1/2;
+    background-color: antiquewhite;
+    display: flex;
+}
+/*  */
+.logo{
+    width: 100px;
+    height: 100px;
+    margin-top: 2px;
+    margin-left: 10px;
+    border-radius: 15%;
+    margin-bottom: 5px;
+}
+.title{
+    margin-left:40px;
+    margin-top:20px;
+}
+
+/* styling the files */
+.navi{
+    margin-top: 80px;
+    margin-left: 70px;
+    word-spacing:18px;
+}
+
+span{
+    color: rgb(255, 0, 85);
+}
+
+/*  */
+#aside{
+    /* starts on the first horizontal line, and ends on the second horizontal line */
+    grid-column: 1/2;
+    /* starts on the second horizontal line, and ends on the third horizontal line */
+    grid-row: 2/3;
+    background-color: lightgoldenrodyellow;
+    resize: horizontal;
+    min-width: 330px;
+    max-width: 830px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+.atag{
+    display: block;
+    margin-top:10px;
+    padding-left:4%;
+    line-height:1.5;
+}
+
+#content {
+    /* starts on the second horizontal line, and ends on the third horizontal line */
+    grid-column: 2/3;
+    /* starts on the second horizontal line, and ends on the third horizontal line */
+    grid-row: 2/3;
+    background-color: bisque;
+    overflow-y:auto;
+    overflow-x: auto;
+}
+
+footer {
+    /* starts on the first horizontal line, and ends on the third horizontal line */
+    grid-column: 1/4;
+    /* starts on the third horizontal line, and ends on the fourth horizontal line */
+    grid-row: 3/4;
+    background-color: turquoise;
+}
+#images {
+    display: flex;
+    flex-grow: 2;
+}
+
+@media only screen and (min-width:640px) {
+    #header{
+        display: flex;
+        flex-direction: row;
+     
+    }
+
+    .logo{
+        width: 60px;
+        height: 60px;
+        margin-top: 2px;
+        margin-left: 5px;
+        border-radius: 15%;
+        margin-bottom: 2px; 
+    }
+
+    .title{
+       
+    }
+
+    .navi{
+        
+        
+    }
+
+
+
+}

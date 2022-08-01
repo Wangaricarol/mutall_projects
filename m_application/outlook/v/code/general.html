@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>Level1 Registration</title>
+    <link rel="stylesheet" href="general.css">
+    <style>
+        * {
+            border-radius: 10px;
+            margin: 20 2 10 2;
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset class="roles">
+        <center>
+            <h2>Level1 Registration</h2>
+        </center>
+        <fieldset id="roles">
+            <div id="content"></div>
+        </fieldset>
+        <fieldset id="organization">
+            <label>
+                Select organization 
+                <select name="organization" id="org"></select>
+            </label>
+            <label>
+                Add a new organization 
+                <input 
+                    id="orgs"
+                    type="text"
+                    name="organization"
+                >
+            </label>
+        </fieldset>
+        <div id="report"></div>
+
+        <div class="buttons">
+            <!--This button exits this page successfully -->
+            <button id="go">Ok</button>
+
+            <!--This button cancels the requested operation -->
+            <button id="cancel">Cancel</button>
+        </div>
+    </fieldset>
+</body>
+
+</html>
+
+<html>

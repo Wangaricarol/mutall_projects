@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Template</title>
+        <style>
+            *{ 
+                font-size: 30px;
+                margin: 6px;;
+                padding: 1px;;
+            }
+            #template{
+                display: block;
+                margin-right: 60%;
+            }
+            label{
+                display: block;
+            }
+           
+        </style>
+    </head>
+    <body>
+       <div class="header">
+            <p>TEST TEMPLATE</p>
+       </div>
+       <fieldset>
+        <div class="content">
+            <form id="template">
+                <!--Input buttons for the roles-->
+                <label>
+                    <span>Name</span>
+                    <input placeholder="Oficial names"> 
+                </label>
+
+                <label>
+                    :Member 
+                    <input type="checkbox" id="checkbox">
+                </label>
+
+                <!--Lable for organization post-->
+                <label for="organization postion">
+                    Choose your organization position: 
+                    <select id="organization postion">
+                        <option value="director">Director</option>
+                        <option value="supervisor">Supervisor</option> 
+                    </select>
+                </label>
+
+                <!--Label for the organizations-->
+                <label for="organization">
+                    Choose your organization:
+                    <select id="organization">
+                      <option value="Pioneer"> Pioneer</option>
+                        <option value="Chama Cha Wazee"> Chama Cha Wazee</option>  
+                        <option value="friends"> Friends</option>
+                            <option value="Kiserian Market"> Kiserian Market</option>
+                        <option value="vuvuzela"> vuvuzela</option>
+                    </select>
+                </label>
+
+                <label>
+                    Room number
+                    <input type="number" id="room number">
+                </label>
+            </fieldset>
+                <button>Submit</button>
+            </form>
+        </div>
+    </body>
+</html>

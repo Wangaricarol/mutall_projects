@@ -1,0 +1,32 @@
+*{
+    margin: 1px;;
+    padding: 1px;
+    font-size: 20px;
+}
+body{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 90%;
+    grid-template-areas: "header" "content";
+}
+.header{
+    margin: 1px;
+    background-color: aqua;
+grid-area: header;
+text-align: left;
+}
+.content{
+    background-color: aliceblue;
+    grid-area: content;
+    width: 100%;
+    display: block;
+}
+.place{
+    width:50%;
+}
+form{
+    border: 2px solid #d6d6d6;
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-right: 20%;
+}

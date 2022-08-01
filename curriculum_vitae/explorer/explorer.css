@@ -1,0 +1,82 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    grid-template-columns: 1fr 3fr;
+}
+
+#header {
+    /* starts on the first horizontal line, and ends on the third horizontal line */
+    grid-column: 1/4;
+    /* starts on the first horizontal line, and ends on the second horizontal line */
+    grid-row: 1/2;
+    background-color: antiquewhite;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+#tree {
+    /* starts on the first horizontal line, and ends on the second horizontal line */
+    grid-column: 1/2;
+    /* starts on the second horizontal line, and ends on the third horizontal line */
+    grid-row: 2/3;
+    background-color: lightgoldenrodyellow;
+    resize: horizontal;
+    min-width: 330px;
+    max-width: 830px;
+    overflow-x: auto;
+    overflow-y: auto;
+    
+}
+
+#list {
+    /* starts on the second horizontal line, and ends on the third horizontal line */
+    grid-column: 2/3;
+    /* starts on the second horizontal line, and ends on the third horizontal line */
+    grid-row: 2/3;
+    background-color: bisque;
+    overflow-y:auto;
+    overflow-x: auto;
+}
+
+/*
+The images are the same height as the current font*/
+img{   height:1em; }
+
+/*
+Align the tree selector with the toggle button*/
+.selector{display:inline; }
+
+/*
+Indent the children by 2 times the font sizes*/
+.children{margin-left: 2em}
+
+/*
+Display the table rows in the list view in alternating
+backgrounds*/
+
+/*
+Specify border for the table*/
+td{
+    border: 1px solid lightgrey;
+}
+/*
+By default the list view is displayed in the normal mode*/
+.edit{
+    display: none;
+}
+
+/*
+Hovered-on selections are shown with a cyan background*/
+.hovered{background-color: cyan}
+
+/*
+Selected selections are show with a blue background and white text*/
+.selected{background-color: blue; color:white;}

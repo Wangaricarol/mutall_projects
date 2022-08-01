@@ -1,0 +1,110 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    grid-template-columns: 1fr 3fr;
+}
+
+#header {
+    /* starts on the first horizontal line, and ends on the third horizontal line */
+    grid-column: 1/4;
+    /* starts on the first horizontal line, and ends on the second horizontal line */
+    grid-row: 1/2;
+    background-color: antiquewhite;
+    display: flex;
+}
+/*  */
+.logo{
+    width: 100px;
+    height: 100px;
+    margin-top: 2px;
+    margin-left: 10px;
+    border-radius: 15%;
+    margin-bottom: 5px;
+}
+.title{
+    margin-left: 70px;
+    margin-top: 40px;
+}
+
+/* styling the files */
+.navi{
+    margin-top: 80px;
+    margin-left: 70px;
+    word-spacing:10px;
+}
+
+/*  */
+#aside{
+    /* starts on the first horizontal line, and ends on the second horizontal line */
+    grid-column: 1/2;
+    /* starts on the second horizontal line, and ends on the third horizontal line */
+    grid-row: 2/3;
+    background-color: lightgoldenrodyellow;
+    resize: horizontal;
+    min-width: 330px;
+    max-width: 830px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+.atag{
+    display: block;
+    margin-top:10px;
+    padding-left:4%;
+    line-height:1.5;
+}
+
+#content {
+    /* starts on the second horizontal line, and ends on the third horizontal line */
+    grid-column: 2/3;
+    /* starts on the second horizontal line, and ends on the third horizontal line */
+    grid-row: 2/3;
+    background-color: bisque;
+    overflow-y:auto;
+    overflow-x: auto;
+}
+
+footer {
+    /* starts on the first horizontal line, and ends on the third horizontal line */
+    grid-column: 1/4;
+    /* starts on the third horizontal line, and ends on the fourth horizontal line */
+    grid-row: 3/4;
+    background-color: turquoise;
+}
+#images {
+    display: flex;
+    flex-grow: 2;
+}
+@media screen and (max-width: 600px) {
+    body {
+        background-color: olive;
+    }
+    .grid-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .flex-wrapper {
+        flex-direction: column;
+        margin-bottom: 20px
+    }
+    /* Hide the panel when viewing in mobile view */
+    aside {
+        display: none;
+    }
+    /*  */
+    #menuToggler {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-image: url(pics/menuToggler.svg);
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position: center center;
+    }
+}

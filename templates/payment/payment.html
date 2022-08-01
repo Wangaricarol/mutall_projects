@@ -1,0 +1,60 @@
+<html>
+    <head> 
+    <title>TEMPLATE</title>
+    <link rel="stylesheet" href="p.css">
+    </head>
+ <body>
+     <center>
+     <h1>PAYMENT FORM</h1>
+     </center>
+    <fieldset>
+        <center>
+        <h2>Enter payment</h2>
+        </center>
+            
+        <label for="amount">Amount:
+            <input type="amount" id="amount"name="amount">
+        </label> 
+        <label for="date">Date:
+            <input type="date" id="date"name="date">
+        </label>
+        <!--  -->
+        <label for="clients">
+            Client:
+            <select id="client">
+            </select>
+        </label>
+    </fieldset>
+        <!--  -->
+    <fieldset>
+            <center>
+                <h2>Mode of payment</h2>
+            </center>
+            <!--  -->
+            <label for="Mpe">Mpesa:
+                <input 
+                type="radio"
+                onclick="Main.show_panel(true, 'mpesa')"/>
+                <input hidden type="mpesa" class="mpesa" name="mpe"> 
+            </label>
+            <!--  -->
+            <label for="cq">cheque:
+                <input 
+                type="radio"
+                onclick="Main.show_panel(true, 'cheque')"/>
+                <input hidden type="cheque" class="cheque" name="cq">
+            </label>
+            <!--  -->
+            <label for="bs">Bank slip:
+                <input
+                type="radio"
+                onclick="Main.show_panel(true,'bank slip')"/>
+                <input hidden type="bs" class="bs"name="bs">
+            </label>
+    </fieldset>
+    <div id="button">
+        <button id="go">save</button> 
+        <button id="cancel">Cancel</button>
+    </div>
+ </body>
+</html>

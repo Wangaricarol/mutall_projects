@@ -1,0 +1,57 @@
+/*Grid design and styling procedure*/
+body {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-areas:
+        "logo header welcome"
+        "services content event"
+        "services content messages"
+}
+.side {
+    display: grid;
+    height: 100vh;
+    gap: 5px;
+    grid-template-rows: 50% 50%;
+}
+
+.services{
+    height: 100vh;
+}
+.logo, .header, .side, .services, .content, .welcome, .footer {
+    background-color:aquamarine;
+}
+
+.select {
+    float: right;
+}
+
+.content {
+    font-size: 25px;
+}
+
+@media (max-width: 500px){
+    body {
+        margin: 5% 3%;
+        height: 100%;
+        overflow: hidden;
+        display: grid;
+        gap: 5px;
+        grid-template-rows: 10% 90%;
+        grid-template-areas:
+            "header"
+            "content";
+    }
+    .header {
+        grid-area: header;
+        text-align: center;
+        padding-top: 10px;
+    }
+    .content {
+        font-size: 15px;
+        grid-area: content;
+        padding: 20px;
+    }
+}
