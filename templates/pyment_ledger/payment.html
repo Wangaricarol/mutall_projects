@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>payment</title>
+    <style>
+    label{
+        display: flex;
+        flex-direction:row;
+
+    }
+    * {
+            font-size: 30px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>PAYMENT FORM</h1>
+    </center>
+<fieldset>
+    <legend>Select mode of payment</legend>
+        <label id="payment">
+            <input class="payment" type="radio">M-PESA
+            <input class="payment" type="radio">Paypal
+            <input class="payment" type="radio">Equity Bank
+        </label>
+        <!-- label for amount -->
+        <label>
+            <span>Amount:</span>
+            <input type="number">
+            <!--
+            The user needs to first pay so that the payment can be verified prior to saving the event.
+            -->
+            <button>Pay</button>
+        </label>
+</fieldset>
+<button id="send">Send</button>
+<button id="cancel">Cancel</button>
+</body>
+</html>

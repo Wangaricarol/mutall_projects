@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ledger</title>
+    <style>
+        label{
+            display: flex;
+            flex-direction:row;
+    
+        }
+        * {
+                font-size: 30px;
+                margin: 5px;
+            }
+        </style>
+</head>
+<body>
+    <center>
+        <h2>Posting ledger</h2>
+    </center>
+    <fieldset>
+        <legend>Is this event contributory ?</legend>
+        <label>
+            <input data-dbname="mutall_users" data-ename="event" name="contributory" type="radio" checked>
+            No
+        </label>
+        <label>
+            <input data-dbname="mutall_users" data-ename="event" name="contributory" type="radio" checked>
+            Yes
+        </label>
+        <fieldset id="mandatory">
+            <legend>Is this contribution mandatory ?</legend>
+            <label>
+                <input data-dbname="mutall_users" data-ename="event" name="mandatory" type="radio" checked />
+                No
+            </label>
+            <label>
+                <input data-dbname="mutall_users" data-ename="event" name="mandatory" type="radio" checked />
+                Yes
+            </label>
+            <label for="amount">Amount:
+                <input type="amount" id="amount"name="amount">
+            </label>
+        </fieldset>
+        <button id="save">Save</button>
+        <button id="cancel">Cancel</button>
+</body>
+</html>

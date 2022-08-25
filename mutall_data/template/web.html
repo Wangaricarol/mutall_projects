@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web</title>
+    <link rel="stylesheet" href="web.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js">
+    </script>
+    <script type="module">
+        import run from "./script.js";
+        //
+        //Onload, run the default file
+        window.onload = () => run("../files/internship.md");
+        //
+        //Make the run module visible outside this module
+        window.run = run;
+    </script>
+</head>
+
+<body>
+
+    <div id="header">
+        <script>
+        </script>
+        <img class="logo" src="./pics/logo.jpeg" alt="">
+        <div class="title">
+            <h1 class="mutald">MUTALL DATA COMPANY</h1>
+            <nav class="navi">
+                <a class="file" href="#" onclick="run('../files/folder.md')">FOLDER</a>
+                <a class="file" href="#" onclick="run('../files/github.md')">GITHUB</a>
+                <a class="file" href="#" onclick="run('../files/npm.md')">NPM REGISTRY</a>
+                <a class="file" href="#" onclick="run('../files/internship.md')">INTERNSHIP</a>
+                <a class=" file" href="#" onclick="run('../files/crud.md')">CRUD</a>
+                <a class="file" href="#" onclick="run('../docs/registrar.md')">REGISTRAR</a>
+                <a class="file" href="#" onclick="run('../files/migration.md')">MIGRATION</a>
+                <a class="file" href="#" onclick="run('../files/messenger.md')">MESSENGER</a>
+                <a class="file" href="#" onclick="run('../files/event.md')">EVENT</a>
+            </nav>
+        </div>
+    </div>
+
+    <div id="aside">
+        <nav>
+            <a class="atag" id="a" href="#" onclick="run('../docs/folder structure.md')">FOLDER: Folder structure</a>
+            Entails 2 main frameworks developed by the mutall_data team, namely: - outlook and schema.
+
+            <a class="atag" href="#" onclick="run('../docs/git and github.md')">GITHUB: Git and Github</a>
+            Entails commands used by developers in Mutall to manage different documents locally.
+
+            <a class="atag" href="#" onclick="run('../docs/npm.md')">NPM REGISTRY: Publishing a library to Npm Registry</a>
+            Entails the requirements and processes needed to create a projects package and be able to publish to the npm registry.
+
+            <a class="atag" href="#" onclick="run('../docs/internship.md')">INTERNSHIP: Internship of Mutall_data</a>
+            Its about the mentorship offered to Postgraduate,Undergraduate,ICDL in IT field. 
+
+            <fieldset>
+                <legend>Modules</legend>
+            <a class="atag" href="#" onclick="run('../docs/crud.md')">CRUD:Crud</a>
+            Its about a system that will aid in carrying out daily carpack activities in mutall carpark.
+
+            <a class="atag" href="#" onclick="run('../docs/registrar.md')">REGISTRAR:Registrar</a>
+            This module is about a system that will aid in tracking our daily activities and assignments.
+
+            <a class="atag" href="#" onclick="run('../docs/migration.md')">MIGRATION:Migration</a>
+            Movement of all Mutall events from the current ocean to digital Ocean.
+
+            <a class="atag" href="#" onclick="run('../docs/messenger.md')">MESSENGER:Messenger</a>
+            Its about passing communication via email,sms and whats app.
+
+            <a class="atag" href="#" onclick="run('../docs/event.md')">EVENTS:Events</a>
+            This module is for helping users to plan and execute events pertaining to their business activities.
+
+        </fieldset>
+        </nav>
+    </div>
+
+    <div id="content">
+    <nav></nav>
+    </div>
+
+    <footer>
+        <center> Mutall data @2022</center>
+        <div class="salutation">
+            Developed by:
+            <a href="../../curriculum_vitae/carol_cv/cv_assg2/cvc.html">Caroline Wangari</a>  
+            contact:+254794165989
+            and
+            Peter Kung'u
+            contact:+254715555770
+        </div>
+    </footer>
+</body>
+
+</html>

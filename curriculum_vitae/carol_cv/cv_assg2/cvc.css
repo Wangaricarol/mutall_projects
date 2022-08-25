@@ -20,21 +20,24 @@ body {
     background-color: antiquewhite;
     display: flex;
 }
-/*  */
+
+.mutald{
+    margin-left: 30px;
+    margin-top: px;
+}
 
 img {
-    width: 120px;
-    height: 120px;
-    margin-top: 2px;
+    width: 110px;
+    height: 110px;
+    margin-top:2px;
     margin-left: 10px;
     border-radius: 15%;
 }
 .title{
-    margin-left: 20px;
-    margin-top: 60px;
+    margin-left:10px;
 }
 .cv{
-    margin-left: 80px;
+    /* margin-left:12%; */
     font-style: italic;
 }
 .about{
@@ -109,29 +112,41 @@ footer {
     background-color: turquoise;
 }
 @media screen and (max-width: 600px) {
-    body {
-        background-color: olive;
-    }
-    .grid-wrapper {
+    body{
         display: flex;
         flex-direction: column;
+    }
+    #header{
+        position:sticky;
+    }
+    .title{
+        margin-left: 20px;
+        margin-top: 0px;
+    }
+    .cv{
+        margin-left: 10px;
+        font-style: italic;
+    }
+   
+    .navi{
+        font-size:12px;
+        word-spacing: 2px;
+    }
+    .img{
+        width: 70px;
+        height: 70px;
+        margin-top: 4px;
+        margin-left: 2px;
+        border-radius: 15%;
+        margin-bottom: 3px;
     }
     .flex-wrapper {
         flex-direction: column;
         margin-bottom: 20px
     }
     /* Hide the panel when viewing in mobile view */
-    aside {
+    #aside {
         display: none;
-    }
-    /*  */
-    #menuToggler {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        background-image: url(pics/menuToggler.svg);
-        background-repeat: no-repeat;
-        background-size: 100% auto;
-        background-position: center center;
+
     }
 }

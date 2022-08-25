@@ -1,6 +1,8 @@
 #RENTIZE
 **Objectives**
 
+Written by [caroline wangari](http://127.0.0.1:5500/curriculum_vitae/carol_cv/cv_assg2/cvc.html)
+
 - The rentize system has two main users, the **landlord** and the **tenant**. It allows for management of
     mutall enterprise.
 
@@ -31,21 +33,28 @@
       1.1.1 [x] Proceed and resolve all errors associated with invoicing. seek further clarification before the next session.  
        1.1.2[x] Fix the "group by" error on d.o(FN)  
   1.2 [x] Continue testing the invoice on d.o until no errors.Any error realised should be pointed out and discussed before next meeting.(Maggie/Camillus)
-2. [ ] Develop an aplication for monitoring issuance of invoices where emails should be sent to both Maggie and Muraya as soon as they (invoices) become ready.The subject of this email will be closing balance of the previous month and the earliest date when a payment was done.  
-  2.1 a [ ]Develop a query for calculating balances of this month.(Carol)  
-  2.1 b[ ]Develop a query for calculating the earliest payment date of this month.(Maggie)  
-    2.1.1[ ]Install a copy mutal users on our local machines database  
-    2.1.2[ ]Inspect each one record  
-    2.1.3[ ]Find out how many users have their names starting with M.  
-  2.2[ ]Formulate the email you need  to send using the results of 2.1 and 2.2.(FN)  
-    2.2.1[ ]Develop a query for calculating balances of this month.FN)  
-    2.2.2[ ]Develop a query for calculating the earliest payment date of this month.(FN)  
-    2.2.3[ ]look on a period table and look on the earliest cutoff date that is in the system  
-2.4[ ]Send an email to Muraya and Maggie as soon as the first query yield some reports.(JO)  
-      2.4.1[ ]Schedule a cronjob that runs on mutal.co server regularly to check whether the first query yield the results and when it does it sends a message(JO)  
-      2.4.2[ ]Echo hello world to a file  
-2.5[ ]Transfer the data changes from mutall co to d.o as soon as they occur.
- The technology to use is database Triger and Cronjob.(PK)
+2. [x] Develop an aplication for monitoring issuance of invoices where emails should be sent to both Maggie and Muraya as soon as they (invoices) become ready.The subject of this email will be closing balance of the previous month and the earliest date when a payment was done.  
+  2.1 a [x] Develop a query for calculating balances of this month.(Carol)  
+  2.1 b [x] Develop a query for calculating the earliest payment date of this month.(Maggie)  
+    2.1.1 [x] Install a copy mutal users on our local machines database  
+    2.1.2 [x] Inspect each one record  
+    2.1.3 [ ] Find out how many users have their names starting with M.  
+  2.2[x]Formulate an email you need  to send using the results of 2.1 and 2.2.(FN)  
+    2.2.1 [x] Develop a query for calculating balances of this month.FN)  
+    2.2.2 [x] Develop a query for calculating the earliest payment date of this month.(FN)  
+    2.2.3 [x] Look on a period table and look on the earliest cutoff date that is in the system.  
+    2.2.4 [ ] Complete the script to send the email with data from 2.2.2 to 2.2.4(FN)  
+  2.3 [x] Send an email to Muraya and Maggie as soon as the first query yield some reports.(JO)  
+      2.3.1 [x] Schedule a cronjob that runs on mutal.co server regularly to check whether the first query yield the results and when it does it sends a message(JO)  
+      2.3.2 [x] Echo hello world to a file  
+  2.4 [x] Transfer the data changes from mutall co to d.o as soon as they occur.
+  The technology to use is database Triger and Cronjob.(PK)  
+3. [ ] Crontab services  
+    3.1 [ ] Performance monitoring of end of month invoicing  
+        3.1.1 [ ] Initiation of email messenging (see 2 above for details) to PM and Maggie(FN)  
+    3.2 [ ] Synchronizing mutall c.o and d.o databases  
+        3.2.1 [ ] Initiation of data transfer from c.o to d.o (see 2.4 for details)(PK)  
+    3.3 [ ] Canceling of 3.1.1 and 3.2.1(JO)
 
 ### Present/Differences(2):mutall_rental+outlook
 
@@ -60,7 +69,7 @@
   
 ### Research:mutall rental+outlook
 
-1.[ ]Make sure all the development is finished before handling the mutall_rental+ Outlook.(FN/PK)  
+1.[ ] Make sure all the development is finished before handling the mutall_rental+ Outlook.(FN/PK)  
 
 #### WATER Billing Service(3)
 
@@ -73,22 +82,31 @@
 
 #### ELECTRICITY Billing Service(4)
 
-1. [ ] Develop/deploy the Electricity billing(KPLC) template.`Maggy/FN`.  
-  1.1 [x] Develop a template based on a kplc message.(Maggie).  
-  1.1.1 [x] PK to deploy the template made by Maggie.(PK)  
-    1.2 [x] Develop the electricity bill class that extends the baby.(PK)  
-    1.2.1 [x] Deploy the method on mutall rental.(PK)  
-    1.3 [x] The check method should use PK method for extracting the billing details and write to the database.The check method should also update our account,but for now its conditional.(PK)  
-    1.3.1[x] Deploy the check method to check the validity of the data.(PK)  
-    1.3.2[x] Seek clarification on the correct implementation of the accounting method.
+1. [ ] Develop/deploy the Electricity billing(KPLC) template.`Maggy/FN`.
+  
+    1.1 [x] Develop a template based on a kplc message.(Maggie).  
+      1.1.1 [x] PK to deploy the template made by Maggie.(PK)  
+  1.2 [x] Develop the electricity bill class that extends the baby.(PK)  
+      1.2.1 [x] Deploy the method on mutall rental.(PK)  
+  1.3 [x] The check method should use PK method for extracting the billing details and write to the database.The check method should also update our account,but for now its conditional.(PK)  
+      1.3.1 [x] Deploy the check method to check the validity of the data.(PK)  
+      1.3.2 [x] Seek clarification on the correct implementation of the accounting method.
     Posting of the electricity bill is conditional.(PK)  
-    1.4[ ] Resolve the errors encountered when saving.(PK)  
-    1.5[ ] Add a button that allows to access the kenya power as a popup that enable copy and paste
+  1.4 [x] Resolve the errors encountered when saving.(PK)  
+  1.5 [x] Add a button that allows to access the kenya power as a popup that enable copy and paste  
+  1.6 [ ] Improving the user interface  
+      1.6.1[ ] Add a panel for error reporting.  
+      1.6.2[ ] Put the acc number in the clip board for later copying to the kenya power website.  
+      1.6.3 [ ] Clear the text area after a successful transfer of the data.  
+      1.6.4 [ ] Put a check mark against the account being processed.  
+      1.6.5 [ ] Bring the last unchecked acc number to be the current one.  
+  1.7[ ] Debug the saving process and use the error reporting panel appropriately
 
 #### Credit and Debit(5)
 
 1. [x] Deploy the Adjustments Credit and Debit template.`Peter`.  
-  1.1 [x] Fill the business selector with the businesses.
+  1.1 [x] Fill the business selector with the businesses.  
+2.[ ] Add a reporting panel and make sure that the saving proceed smoothly.
 
 #### Payment services(6)
 

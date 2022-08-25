@@ -16,32 +16,33 @@ d3.csv("perfomance_data.csv",(data)=>{
             d.siku=parseTime(d.siku);
         });
     //
+    //
     //Define the graph size and position 
-        var height=500;
-        var width =700;
-        var margin={top:30,left:100,right:50,bottom:50};
-    //
-    //Set up the main svg element
-        var svg = d3
+    var height=500;
+    var width =700;
+    var margin={top:30,left:100,right:50,bottom:50};
+//
+//Set up the main svg element
+    var svg = d3
 
-    //Get the svg element from the html file; it is classified as linechat
-        .select(".line_chart")
-    //
-    //Add the width attribute to the svg
-        .attr("width",+width +margin.left+margin.right)
-    //
-    //Add the height attribute to the svg
-        .attr("height",height +margin.top+margin.bottom)
-    //
-    //Append the g element to the svg element 
-        .append("g")
-    //
-    //Add the transform attribute to the g element
-        .attr("transform","translate("+margin.left+","+margin.top+")");
-    
+//Get the svg element from the html file; it is classified as linechat
+    .select(".bar_graph")
+//
+//Add the width attribute to the svg
+    .attr("width",+width +margin.left+margin.right)
+//
+//Add the height attribute to the svg
+    .attr("height",height +margin.top+margin.bottom)
+//
+//Append the g element to the svg element 
+    .append("g")
+//
+//Add the transform attribute to the g element
+    .attr("transform","translate("+margin.left+","+margin.top+")");
+
     //create the x axis
     //
-        var x = d3.scaleTime()
+    var x = d3.scaleTime()
     //The d3.extent()gets the min and max value of the siku data in order
 
     //The d3.domain()an array of integers that is defining the extent of siku values and displaying it.
@@ -57,7 +58,7 @@ d3.csv("perfomance_data.csv",(data)=>{
 
     //create the y axis
     //d3.scaleLinear creating a scale with a linear relationship between input and output.
-        var y = d3.scaleLinear()
+    var y = d3.scaleLinear()
     //
     //
         .domain([0,d3.max(rate)])
@@ -74,7 +75,7 @@ d3.csv("perfomance_data.csv",(data)=>{
         .attr('y', 0)
         .attr('text-anchor', 'middle')
         .style('font-size', 20)
-        .text(' Error rate line Chart');
+        .text(' Error rate bar Graph');
     
     // X label(data)
         svg.append('text')
@@ -92,42 +93,7 @@ d3.csv("perfomance_data.csv",(data)=>{
         .attr('x', -margin.left + 10)
         .attr('y',-margin.top)
         .text("Rate (%)");
-    //
-    // Draw the line connector
+
         svg.append("path")
-        .datum(data)  //Injecting and joining data for visualization in the graph  
-    //styling 
-        .style("fill", "none") 
-        .style("stroke", "steelblue")
-        .style("stroke-width", "2")
-        .attr("d", d3.line()
-    //Joining the data points using a line x axis
-        .x((d)=>{return x(d.siku)})
-    //Joining the data points using a line y axis
-        .y((d)=>{return y(d.rate)}));
-    //
-    //Insert the data points to the line graph
-        svg.append('g')
-    //
-    //Define the circle shape
-        .selectAll("dot")
-    //
-    //The values to the data points
-        .data(data)
-    //
-    //Prepare each value of the data above in order to create the circle
-         .enter()
-    //
-    //Create the circle for each value
-        .append("circle")
-    //
-    //Provide the x coordinate of the data point
-        .attr("cx",(d)=>{return x(+d.siku)} )
-    //
-    //Provide the y coordinate for the data point
-        .attr("cy",(d)=>{return y(+d.rate)})
-    //
-    //Give the radii and the color
-        .attr("r", 3)
-        .style("fill", "black");                              
+        .datum(data)
 });
