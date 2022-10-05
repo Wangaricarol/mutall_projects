@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    svg{
+      height: 100vh;
+      width:100%;
+
+    }
+  </style>
+  
+  <body>
+    <svg width="200" height="100" viewBox="0 0 100 200">
+
+      <!-- Draw the outline of the motion path in grey -->
+      <path d="M10,110 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110"
+          stroke="lightgrey" stroke-width="2"
+          fill="none" id="theMotionPath"/>
+   
+      <g transform="translate(100, 0)">
+        <use href="#theMotionPath"/>
+       <!-- Green arrow which will rotate along the motion path -->
+       <path fill="green" d="M-5,-5 L10,0 -5,5 0,0 Z">
+        <!-- Define the motion path animation -->
+        <animateMotion dur="6s" repeatCount="indefinite" rotate="auto">
+          <mpath href="#theMotionPath"/>
+        </animateMotion>
+        </path>
+      </g> 
+    
+    </svg>
+
+  </body>
+          
+</html>

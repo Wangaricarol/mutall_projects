@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Put the styling in a css file, then link it-->
+        <link rel="stylesheet" href="style.css"/>
+        <style>
+            path{
+                stroke-width: 0.1%;
+                fill:none ;
+                stroke:blueviolet;
+                stroke-dasharray:2,2,2;
+            }
+            rect{
+                fill:none;
+                stroke: palevioletred;
+                stroke-width: 0.5;
+            }
+        </style>
+    </head>
+    <body>
+        <svg viewbox="0 0 200 100">
+
+            <!-- the rectangle marking the viewbox -->
+            <rect x="0" y="0" width="200" height="100"/>
+            <!--
+            lunar_systrm: combination of the  earth, the moon and its circular 
+            orbit around the earth -->
+            <g>
+                <!-- the circular orbit of the moon around the earth (as a path)-->
+                <path
+                    d="M 50 25 A 25 25 0 0 1 50 75 A 25 25 0 0 1 50 25 Z"
+                    id="lunar_orbit" transform="translate(-50,-50)">
+                </path> 
+                
+                <!-- the moon -->
+                <circle r="6" fill="black" >
+                 <animateMotion dur="10s" repeatCount="indefinite" >
+                        <mpath href="#lunar_orbit"/>
+                    </animateMotion>     -->
+                </circle>
+
+                <circle r="8" fill="pink"  > 
+
+
+                </circle>
+
+            </g>
+            <!-- the path -->
+            <path d="M 50 50 L 150 50" id="earth_orbit"/>
+        </svg>
+    </body>
+</html>

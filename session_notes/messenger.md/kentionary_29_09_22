@@ -63,14 +63,23 @@ ___
         1.0 Harmonize manually the module ts in tracker n kentionary.  
 
         1.1 [x] Set up ways of collaborating with git so that this harmonization is activated.  
-        1.2 [ ] Address all the errors in your twilio class so we are left with ones that need further work.
-        Follow up on this status call back and how we can use it to communicate with js code.  
+        1.2 [x] Address all the errors in your twilio class so we are left with ones that need further work.
+        Follow up on this status call back and how we can use it to communicate with js code.
+        1.3 [ ] Modify the messager template for users to select the desired technology to use(Carol)
+            1.3.1 [ ] Use checkboxes to select the technology to use,by default none is checked(Carol)  
+            1.3.2 [ ] Add a listener to the sms checkbox to show the cost (FN)  
+            1.3.3[ ]  Add a listener to the email checkbox to see the potential reach of the people.(FN)
+            1.3.4 [ ] Modify the messenger to include the technology(PK)
+        1.4 [ ] Revist the send message method to remove deplicate codesfor individual and groups(FN)  
+        1.5 [ ] Formulate sql statement for picking the primary phone number as addresses(FN)  
+        1.6 [ ] Merge the mailer and the twilio code together(PK)  
+        1.7 [ ] Progress on the reply option(PK)    
 
 ### (6) Email
 
 1. Make sure the same way he created a class for twiilio he should do the same for php mailer(PK).  
         1.1.[x] Test this class in php and adapt it so that we have mailer class in js that calls this php.  
-        1.2.[ ] implement the mailer class in js constraining the send_message() method to 2 parameters i.e. sender and body for this version.
+        1.2.[ ] Implement the mailer class in js constraining the send_message() method to 2 parameters i.e. sender and body for this version.
 
 ### (7) WhatsApp
 

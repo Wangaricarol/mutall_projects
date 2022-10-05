@@ -1,0 +1,140 @@
+<html>
+
+<head>
+  <title>create message</title>
+  <style>
+    * {
+      font-size: 20px;
+      margin: 5px;
+    }
+
+    label {
+      display: block;
+    }
+
+    /* Fixed size text area */
+    textarea {
+      height: 150px;
+      width: 500px;
+      overflow-y: scroll;
+    }
+
+    #users,
+    .users {
+      align-items: center;
+      max-height: auto;
+      display: flex;
+      flex-direction: row;
+    }
+.users>fieldset{
+  width: 40%;
+}
+    /* Display the field sets of recipients as a row */
+    .recipients,
+    .selected {
+      text-align: center;
+      display: flex;
+      height: auto;
+      width: auto;
+      flex-direction: column;
+    }
+    #all,
+    #chosen {
+      border: 1px solid black;
+      text-align: left;
+      max-height: 150px;
+      width: auto;
+      overflow-y: scroll;
+    }
+
+    /* Separate the field set of chosen recipients */
+    .selected {
+      margin-left: 50px;
+    }
+
+    /* The events panel */
+    .event {
+      margin-left: 150px;
+    }
+
+    #report {
+      background-color: azure;
+      overflow-y: scroll;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 align="center">create message</h1>
+  <!-- label for choosing a language -->
+  <div class="users">
+  <fieldset>
+    <legend>Select the type of receiver</legend>
+    <label>
+      <input type="radio" name="recipient" value="individual" id="individual" />
+      Individual
+    </label>
+    <div id="users" hidden>
+      <div class="recipients">
+        All users
+        <div id="all"></div>
+      </div>
+      <div class="selected">
+        Chosen recipients
+        <div id="chosen"></div>
+      </div>
+      <!-- <select id="recipients"></select> -->
+    </div>
+    <label>
+      <input type="radio" name="recipient" value="group" id="group" />
+      group
+    </label>
+  </fieldset>
+      <fieldset>
+        <legend>Technology to use in addition to our local message android</legend>
+        <label id="tec">
+          <input type="checkbox" name="recipient" value="tec" id="tec" />
+          Email
+        </label>
+        <label id="tec">
+          <input type="checkbox" name="recipient" value="tec" id="tec" />
+          Sms
+        </label>
+      </fieldset>
+    </div>
+  
+  <div class="users">
+    <label>
+      Date
+      <input id="date" type="date" value="2022-06-23" disabled />
+    </label>
+    <label>Subject
+      <input type="text" id="subject" value="Testing Messenger" />
+    </label>
+  </div>
+  <div class="users">
+    <!-- label for the message -->
+    <label>Enter message<br />
+      <textarea id="msg">Hello. This is sent from the mutall messenger</textarea>
+    </label>
+    <fieldset class="event">
+      <legend>Is this message associated with an event?</legend>
+      <label>
+        <input type="radio" value="no" name="event" id="event_no" />
+        No
+      </label>
+      <label>
+        <input type="radio" value="yes" name="event" id="event_yes" />
+        Yes
+      </label>
+      <button id="create_event" hidden>create event</button>
+    </fieldset>
+  </div>
+  <div id="report">
+    report
+  </div>
+  <button id="go">Send</button>
+  <button id="cancel">Cancel</button>
+</body>
+
+</html>

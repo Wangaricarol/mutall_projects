@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        svg{
+            height:100vh;
+            width:100%;
+            background-color: violet;
+        }
+    </style>
+    <body>
+      <svg height="100" viewBox="20 25 50 50">
+          <!-- ellipse orbit -->
+           <path
+           
+            d="M 20 50 Q 50 80 80 50  Q 50 20  20 50z" 
+             stroke="black" 
+           stroke-width="0.25"  fill="transparent" id="Path" />
+ width="100"
+          <!-- sun -->
+           <circle cx="50" cy="50" r="2" fill="yellow" >
+             <!-- <animateTransform attributeName="transform"
+             type="scale" 
+             from="1"
+             to="30deg"
+             dur="1s"
+             additive="sum"
+             fill="freeze"  
+             repeatCount="indefinite"  
+             /> -->
+           </circle>
+           <text x="49" y="50" fill="BLACK" font-size="5%">SUN</text>
+
+           <g id="the moon">           
+               <!-- earth -->
+              <circle cx="65" cy="61" r="2" fill="teal" stroke="black" stroke-width="0.1" >
+             <text x="66" y="48" fill="black" font-size="10%">Earth</text>          
+                 <!--  />               -->
+              </circle>
+              moon  
+              <circle cx="65" cy="67" r="1.5" style="fill:cadetblue" moon />
+              <text x="63" y="67" fill="black" font-size="8%">moon</text> 
+
+             <!-- moons orbit -->
+             <circle cx="65" cy="62" r="5" style="fill:transparent;stroke:black;
+             stroke-dasharray:2,2,2;stroke-width:0.05" />
+<!-- 
+            
+                <animateMotion dur="10s" repeatCount="indefinite" >
+                    <mpath href="#Path"/>
+                </animateMotion> 
+w
+            </g>
+
+                
+        </svg>
+            
+    </body>
+</html>

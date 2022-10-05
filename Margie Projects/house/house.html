@@ -1,0 +1,73 @@
+<html>
+    <head>
+            <title> house </title>
+        
+            <style>
+                svg {
+                    height:100%;
+                    width:100%;
+                    stroke: "black"; 
+                    stroke-width: "0.03";
+                    background-color: bisque;
+        
+                }
+                polygon,line,polyline,rect{stroke-width:0.03;
+                                      fill:none;
+                                      stroke:teal;
+                }
+                text{
+                    font-size: 0.3px;
+                }
+            </style>
+    </head>
+           
+    <body>
+        <svg viewbox="0 0 10 7">
+        
+            <g id="house">
+                
+                <circle cx="5" cy="1.2" r="0.2" fill="black" />
+                <polygon points="1 3   5 1  9 3" />
+                <rect  x="2" y="3" width="6" height="3"/>
+                <rect  x="2.2" y="3.2" width="1" height="1" />
+                <rect  x="4.4" y="4" width="1.5" height="2" />
+                <rect  x="6.8" y="3.3" width="1" height="1" />
+                 <polyline points="2.4 4.3 2.2 4.4  2.6 4.4 2.2 4.4  2.4 4.5" />
+                 <polyline points="3.1 4.3 3.2 4.4  3.1 4.5 3.2 4.4  2.9 4.4 " />
+                 <text x="2.6" y="4.4">2m</text>
+        
+                 <polyline points="7.0 4.4 6.8 4.5  7.0 4.6 6.8 4.5  7.2 4.5 "/>
+                 <polyline points="7.6 4.4 7.8 4.5  7.6 4.6 7.8 4.5  7.4  4.5 "/>
+                 <text x="7.2" y="4.5">2m</text>
+        
+                 <!--
+                This is the big line-->
+                <line x1="2.0" y1="6.4" x2="8.0" y2="6.4"/>
+                 <!--
+                      <line x1="2.0" y1="6.4" x2="8.0" y2="6.4"/>
+                This is the left arrow-->
+                 <polyline points="2.2 6.2  2.0 6.4  2.2 6.6"/>
+                <!--
+                This is the right arrow-->
+                 <polyline points="7.8 6.2  8.0 6.4  7.8 6.6"/>
+                <!--
+                This is the line text-->
+                 <text x="5.2" y="6.4">6m</text>
+
+            </g>
+        
+            <!..use href="#house" transform="translate(-2, 0) scale(0.25).." />
+            
+            <!..use href="#house" transform="translate(10,0) scale(0.5) rotate(180)" />
+            
+        
+            <!..use href="#house" transform="translate(4, 0) scale(1,)" />
+
+        </svg>
+
+    </body>
+</html>
+
+
+
+

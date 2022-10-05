@@ -1,0 +1,60 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    grid-template-columns: 1fr 2.5fr 1.5fr;
+}
+
+#header {
+    /* starts on the first horizontal line, and ends on the third horizontal line */
+    grid-column: 1/4;
+    /* starts on the first horizontal line, and ends on the second horizontal line */
+    grid-row: 1/2;
+    background-color: antiquewhite;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+#definer {
+    /* starts on the first horizontal line, and ends on the second horizontal line */
+    grid-column: 1/2;
+    /* starts on the second horizontal line, and ends on the third horizontal line */
+    grid-row: 2/3;
+    background-color: lightgoldenrodyellow;
+    resize: horizontal;
+    min-width: 330px;
+    max-width: 830px;
+    overflow-x: auto;
+    overflow-y: auto;
+    
+}
+
+#content {
+    /* starts on the second horizontal line, and ends on the third horizontal line */
+    grid-column: 2/3;
+    /* starts on the second horizontal line, and ends on the third horizontal line */
+    grid-row: 2/3;
+    background-color: bisque;
+    overflow-y:auto;
+    overflow-x: auto;
+}
+#aside{
+    background-color: brown;
+}
+#dive{
+    background-color: blue;
+}
+footer {
+    /* starts on the first horizontal line, and ends on the third horizontal line */
+    grid-column: 1/4;
+    /* starts on the third horizontal line, and ends on the fourth horizontal line */
+    grid-row: 3/4;
+    background-color: turquoise;
+}

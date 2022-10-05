@@ -1,0 +1,31 @@
+
+html{
+    height: 100%;
+    width: 100%;
+}
+body{
+    height: 100%;
+    width: 100%;
+}
+svg{
+    height: 100%;
+   width: 100%;
+    background-color:rgb(202, 240, 242);
+    stroke: black;
+    stroke-width: 0.05;
+
+}
+line{
+    fill:gainsboro;
+}
+text{
+    font-size:15%;
+}
+path{
+    fill:none;
+    stroke: black;
+    stroke-width: 0.15;
+}
+ellipse
+
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Put the styling in a css file, then link it-->
+        <link rel="stylesheet" href="style.css"/>
+        <style>
+            path{
+                stroke-width: 0.2%;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <svg viewbox="0 0 100 100">
+            <rect width="100" height="100" 
+            style="fill:none;stroke-width:0.5;stroke:rgb(247, 150, 226)" />
+
+                  <!--Draw the reference lines using a faint color-->
+                 <!-- the y-axis reference lines -->
+                <line x1="0" y1="0" x2="0" y2="100" />
+                <line x1="25" y1="0" x2="25" y2="100" />
+                <line x1="50" y1="0" x2="50" y2="100" />
+                <line x1="75" y1="0" x2="75" y2="100" />
+                <line x1="100" y1="0" x2="100" y2="100" />
+    
+                  <!-- the x-axis reference lines -->
+                <line x1="0" y1="0" x2="100" y2="0" />
+                <line x1="0" y1="25" x2="100" y2="25" />
+                <line x1="0" y1="50" x2="100" y2="50" />
+                <line x1="0" y1="75" x2="100" y2="75" />
+                <line x1="0" y1="100" x2="100" y2="100" />
+    
+
+           <path
+           d=" M 12, 25
+                a 12.5,12.5 0 1,1  25,0 
+                a 12.5,12.5 0 1,1 -25,0 "
+             fill="none" id="Path"  
+             style="stroke:black;
+             stroke-dasharray:2,2,2;stroke-width:0.2" >
+           </path> 
+           
+
+           <path d=" M 25, 50
+                a 25,25 0 1,1  50,0 
+                a 25,25 0 1,1 -50,0 "
+             style="stroke:teal;"  fill="none"       
+           />
+
+
+           <!-- the line marks -->
+           <!-- x-axis -->
+           <line x1="25" y1="37.5" x2="75" y2="37.5"/>
+           <line x1="25" y1="62.5" x2="75" y2="62.5"/>
+           <!-- y-axis -->
+           <line x1="37.5" y1="25" x2="37.5" y2="75"/>
+           <line x1="62.5" y1="25" x2="62.5" y2="75"/>
+
+        </svg>
+    </body>
+</html>
+
+
