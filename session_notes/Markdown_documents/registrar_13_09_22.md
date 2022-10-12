@@ -13,7 +13,6 @@ This is a system that will aid in tracking our daily activities and assignments.
 In tracker application we intend to have three role players;The C.E.O of a
 company,the staff and the developers of their systems.
 
-
 ## REGISTRAR AGENDA
 
 ```mermaid
@@ -58,8 +57,6 @@ The C.E.O should be in a position to register.
 - His organization.
 - His developers.
 - His staff.
-
-
 
 ## 1.2 INTERNS/SERVICE CONSUMER REGISTRATION
 

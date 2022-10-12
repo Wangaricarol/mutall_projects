@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>cylinder</title>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+        }
+        svg{
+            /* background-color:whitesmoke; */
+            margin-right: 0px;
+            margin-left:25px;
+        }
+        .grid{
+            stroke:azure;
+            stroke-width:0.3px;
+            stroke-dasharray: 1px;
+        }
+        .main{
+            stroke-width:0.5px;
+            fill:black;
+            stroke: 2;
+        }
+        .connect{
+            stroke:black;
+            stroke-width:0.5px;
+            stroke-dasharray: 2px;
+        }
+        .labels{
+            font-size:4.5px;
+        }
+        .cylinder{
+          stroke: blue;
+          stroke-width:0.5px;
+          fill:green;
+        }
+        .cylinder2{
+          stroke:skyblue;
+          stroke-width:0.5px;
+          fill:aquamarine;
+        }
+        .data{
+          stroke:red;
+           fill:none;
+            stroke-width:0.5;
+        }
+    </style>
+</head>
+<body>
+    <svg viewbox="0 0 160 128">
+        <!-- 
+          path for drawing the cylinder
+         -->
+        <path d="M 16,32 16,64 M 16,64 C 16,64 32,72 48,64 
+            M 48,64 48,32 C 48,32 32,40 16,32 C 16,32 32,24 48,32" class="cylinder"/>
+        <path d="M 16,32 16,64 M 16,64 C 16,64 32,72 48,64
+             M 48,64 48,32C48,32 32,40 16,32C 16,32 32,24 48,32" class="cylinder2" transform="translate(90)"/>
+
+        <!-- 
+          control points for the curve-->
+             <!-- <circle cx="32" cy="72" r="1"/>
+             <circle cx="32" cy="40" r="1"/>
+             <circle cx="32" cy="24" r="1"/> -->
+        <!-- 
+          the line connector of the two cylinder -->
+        <line x1="48" y1="48" x2="64" y2="48"class="connect"/>
+        <line x1="96" y1="48" x2="106" y2="48" class="connect"/>
+        <path d="M64 48 H93.5 V46 L97 48 L93.5 51 V 49 H 64 "class="main"/>
+        <!-- <line x1="64" y1="48" x2="96" y2="48" class="main"></line> -->
+        
+        <g class="data">
+          <path d="M 138 49 H 140 V 56" />
+          <path d="M 138 46 H 143 V 56" />
+          <path d="M 138 44 H 143 V 36"/>
+        </g>
+        <!-- 
+          the circle points -->
+        <circle cx="64" cy="48.5" r="1"></circle>
+        <!-- 
+          Label tags -->
+        <text x="20" y="51"class="labels">mutall c.o </text>
+        <text x="110" y="51"class="labels">mutall d.o</text>
+        <text transform="translate(53,48)rotate(-90)" class="labels">data collection+</text>
+        <text transform="translate(59,46)rotate(-90)" class="labels">extraction</text>
+        <text x="66" y="47"class="labels">transmission</text>
+        <text transform="translate(100,46)rotate(-90)"class="labels">data ingestion</text>
+        <text x="140" y="46"class="labels">data output</text>
+      </svg>
+</body>
+</html>
