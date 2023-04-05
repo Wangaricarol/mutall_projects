@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>metavisuo</title>
+        <meta charset="UTF-8">
+        <style>
+            html{
+                height: 100%;
+            }
+            body{
+                height:100%;
+                display: grid;
+                grid-template-rows:10% 90%;
+                overflow-y:hidden;
+                margin: 0;
+                padding: 0;
+            }
+
+            #header{
+                grid-template-rows:10%;
+                position: sticky;
+                background-color: aqua;
+            }
+            .subheading{
+                word-spacing: 20px;
+            }
+            #content{
+                overflow-y: hidden;
+                grid-template-rows:90%;
+                background-color: bisque;
+            }
+            svg{
+                height: 100%;
+                width: 80%;
+                background-color:whitesmoke;
+                margin-right: 10%;
+                margin-left: 10%;
+                overflow-y: scroll;
+                }
+            circle{
+                stroke:none;
+                stroke-width: 0.2px;
+                fill:aquamarine;
+               
+                } 
+            .gattribute{
+                fill:blue;
+                font-size: 2px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .relations{
+                stroke: brown;
+                stroke-width:0.1px ;
+            }
+            .arrow{
+                stroke-width:0.4;
+                fill: brown;
+
+            }
+           .attrpoly{
+                fill: none;
+                stroke: black;
+                stroke-width: 0.2px;
+            }
+
+            .lables{
+                fill:black;
+                font-size: 2px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            get_path{
+                fill: blue;
+                /* font-size: 3em; */
+                stroke-width: 5px;
+            }
+            .tick{
+                fill: black;
+                stroke-width: 0.3px;
+            }
+            .selected circle {
+                fill:rgb(189, 135, 222);
+                opacity: 0.1px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!--
+        The header section-->
+        <div id="header">
+            <div class="subheading">
+                entity operations, selected, view
+            </div>
+            <button id="zoom_out">&#43</button>
+            <button id="zoom_in">&#45</button>
+            <button id="pan_up">&#94</button>
+            <button id="pan_down">&#60</button>
+            <button id="pan_left">&#62</button>
+            <button id="pan_right">&#86</button>
+            <select id="pages"></select>
+            <button id="close_dbase">close database</button>
+            <button id="save">save</button>
+        </div>
+        <!--
+        The content section-->
+        <div id="content"></div>
+        <button id="go" hidden>go</button>
+        <button id="cancel" hidden>cancel</button> 
+    </body>
+</html>

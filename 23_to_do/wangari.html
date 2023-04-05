@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to_do_23</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        svg{
+            height: 100%;
+            width: 100%;
+            margin-top: 2%;
+            margin-left: 5%;
+            background-color: azure;
+        }
+        .name {
+            text-transform: uppercase;
+            animation: stroke 8s infinite alternate;
+            stroke: white;
+            font-size: 5px;
+        }
+        @keyframes stroke {
+            0%   {
+                fill:black; stroke:darkblue;
+                stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 0.05;
+            }
+            80%  {fill: white; stroke:burlywood; stroke-width: 0.1; }
+            100% {
+                fill:blue; stroke:white; 
+                stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
+            }
+        }
+        .mycv{
+            font-size: 9px;
+            font-style: italic;
+        }
+        .sec1{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <center class="portfolio">portfolio 2023</center>
+    </header>
+    <section class="sec1">
+        <svg
+            viewBox="0 0 128 64"
+            xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <clipPath id="svgPath">
+                    <path d="M 40,30 A 1 1 0 0 1 2  26 A 2 2 -1 1 1 40 30"/>  
+                </clipPath>
+            </defs>
+            <image href="./images/pic1.jpg" x="-4" y="9" height="60" width="60" clip-path= "url(#svgPath)">
+                <!-- <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="rotate"
+                from="0 10 40"
+                to="360 30 20"
+                dur="5s"
+                repeatCount="indefinite" /> -->
+                <animateMotion dur="4s" repeatCount="indefinite"
+                path="M 4, 2 a 5,3 0 1,0 1,0"/>
+                <animate attributeName="dy" values="0;5;0" dur="10s" repeatCount="indefinite"/>
+            </image>
+            <text class="name" x="2" y="6" >I am Wawira Carolyne wangari</text>
+            <text class="mycv" x="20" y="63"><a href="http://206.189.207.206/carol/wangari/cv.html">my c.v</a></text>
+        </svg>
+    </section>
+   
+</body>
+</html>

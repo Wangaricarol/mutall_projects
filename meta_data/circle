@@ -1,0 +1,54 @@
+
+		
+		// 			POLYLINE
+		// Create a polyline
+		const p:SVGPolylineElement = document.createElementNS(svgns,"polyline");
+		// 
+		//Attaching the line to the svg element
+		svg.appendChild(p);
+		// 
+		// Set the polyline attribute
+
+		// Attach the marker to the polyline
+		p.setAttribute("marker-mid","url(#mline)");
+
+		// 		THE LINE MARKER
+		// Provide the marker namespace
+		const m:SVGMarkerElement = document.createElementNS(svgns,"marker");
+		// 
+		//Attaching the marker to the svg element
+		svg.appendChild(m);
+		// 
+		// Supply the line marker attributes
+		m.setAttribute("viewBox","0 0 16 16");
+		m.setAttribute("id","mline");
+		m.setAttribute("refX","8");
+		m.setAttribute("refY","8");
+		m.setAttribute("markerWidth","16");
+		m.setAttribute("markerHeight","16");
+	
+
+		// 		THE line attribute
+		// The namespace drawing the line marker path.
+		const lin:SVGPathElement = document.createElementNS(svgns,"line");
+		// Draw the arrow path
+		lin.setAttribute("lin","8,8 16,8");
+		// 
+		// Append the marker path to the arrow marker.
+		m.appendChild(lin);
+
+		
+
+	// // This event listener allows us to deleselect any entity that is currently selected and 
+	// //select the current one
+	// entity_select(current:SVGCircleElement){
+	// 	//
+	// 	//Get the entity (circle) that was previously selected
+	// 	const previous:HTMLElement|null = this.document.querySelector('.selected');
+	// 	//
+	// 	//If there is any, deselect it
+	// 	if (previous!==null) previous.classList.remove('selected');
+	// 	//
+	// 	//Mark the current one as selected
+	// 	current.classList.add('selected');
+	// }

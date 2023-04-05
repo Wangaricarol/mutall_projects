@@ -1,0 +1,133 @@
+
+	// //show panels - old version
+	// public async show_panels_old(): Promise<void> {
+	// 	//
+	// 	//Define the first cirle
+	// 	const c1:point = {x:16, y:32};
+		
+	// 	const radius:number=5;
+
+	// 	// Define the second circle C2
+	// 	const c2x:number=64;
+	// 	const c2y:number=16;
+        
+    //     // 
+    //     //Attaching the file to the svg element 
+    //     const svg =this.get_element('canvas');
+    //     // 
+    //     //Namespace needed to create svg elements.
+    //     const svgns = "http://www.w3.org/2000/svg";
+	// 	//
+	// 	//		C1
+    //     //Create the first circle
+	// 	// providing a namespace element to create circle 1.  
+    //     const c1:SVGCircleElement = document.createElementNS(svgns,"circle");
+	// 	// 
+	// 	//Append the circle to the svg 
+    //     svg.appendChild(c1);
+	// 	// 
+    //     // Draw the first circle
+    //     // set the x coordinate
+    //     c1.setAttribute("cx", `${c1x}`);
+    //     // 
+    //     // Set the y coordinate
+    //     c1.setAttribute("cy",`${c1y}`);
+    //     // 
+    //     // Set the circle radius.
+    //     c1.setAttribute("r",`${radius}`);
+		
+    //     //		C2
+	// 	// Create the second circle.
+	// 	//Namespace to provide the svg circle element
+    //     const c2:SVGCircleElement = document.createElementNS(svgns,"circle");
+    //     //
+    //     //Append the circle to the svg 
+    //     svg.appendChild(c2);
+	// 	// 
+	// 	// Draw the second circle
+	// 	// 
+	// 	// set the x coordinate
+    //     c2.setAttribute("cx",`${c2x}`);
+    //     // 
+    //     // Set the y coordinate
+    //     c2.setAttribute("cy",`${c2y}`);
+    //     // 
+    //     // Set the circle radius.
+    //     c2.setAttribute("r", `${radius}`);
+
+	// 	// 			TEXT in C1
+	// 	// Create text namespace
+	// 	const text:SVGTextElement = document.createElementNS(svgns, "text");
+	// 	//
+	// 	//Append the text to the svg element
+	// 	svg.appendChild(text);
+	// 	// 
+	// 	// Set the x, y and content
+	// 	text.setAttribute("x",`${c1x}`);
+	// 	text.setAttribute("y",`${c1y}`);
+	// 	text.setAttribute("text-anchor","middle");
+	// 	text.textContent= ("event");
+	// 	// text.style.textAlign = "center";
+
+
+	// 	// 			TEXT in C2
+	// 	// Create text namespace
+	// 	const name:SVGTextElement = document.createElementNS(svgns, "text");
+	// 	// 
+	// 	//Append the text to the svg element
+	// 	svg.appendChild(name);
+	// 	// 
+	// 	// Set the x, y and content
+	// 	name.setAttribute("x",`${c2x}`);
+	// 	name.setAttribute("y",`${c2y}`);
+	// 	name.setAttribute("text-anchor","middle");
+	// 	name.textContent= ("activity");
+		
+	// 	// 			POLYLINE
+	// 	// Create a polyline
+	// 	const p:SVGPolylineElement = document.createElementNS(svgns,"polyline");
+	// 	// 
+	// 	//Attaching the line to the svg element
+	// 	svg.appendChild(p);
+	// 	// 
+	// 	// get the mid p2 of the line c2-c1/2 + c1;
+	// 	// define the points
+	// 	//
+	// 	const p2x = this.get_mid_x();
+	// 	const p2y = (c2y-c1y)/2 + c1y;
+	// 	//
+	// 	const p1 =`${c1x},${c1y}`;
+	// 	const p2=`${p2x}, ${p2y}`;
+	// 	const p3 =`${c2x},${c2y}`;
+	// 	// 
+	// 	// Set the polyline attribute
+	// 	p.setAttribute('points', `${p1},${p2},${p3}`);
+
+	// 	// Attach the marker to the polyline
+	// 	p.setAttribute("marker-mid","url(#arrow)");
+
+	// 	// 		THE ARROW MARKER
+	// 	// Provide the marker namespace
+	// 	const m:SVGMarkerElement = document.createElementNS(svgns,"marker");
+	// 	// 
+	// 	//Attaching the marker to the svg element
+	// 	svg.appendChild(m);
+	// 	// 
+	// 	// Supply the arrow marker attributes
+	// 	m.setAttribute("viewBox","0 0 16 16");
+	// 	m.setAttribute("id","arrow");
+	// 	m.setAttribute("refX","4");
+	// 	m.setAttribute("refY","4");
+	// 	m.setAttribute("markerWidth","8");
+	// 	m.setAttribute("markerHeight","8");
+	
+
+	// 	// 		THE ARROW PATH
+	// 	// The namespace drawing the arrow marker path.
+	// 	const pm:SVGPathElement = document.createElementNS(svgns,"path");
+	// 	// Draw the arrow path
+	// 	pm.setAttribute("d","M 0 0 L 8 4 L 0 8 z");
+	// 	// 
+	// 	// Append the marker path to the arrow marker.
+	// 	m.appendChild(pm);
+	// }

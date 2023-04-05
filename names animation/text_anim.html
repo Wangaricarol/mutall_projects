@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text animation</title>
+    <style>
+        *{
+           margin:0%;
+           padding:0%;
+           box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100dvh;
+            background-color: azure;
+        }
+        .wrapper{
+            display: inline-flex;
+        }
+        .wrapper .dynamic-txts{
+            margin-left:15px;
+        }
+        .dynamic-txts li{
+            color:grey;
+            list-style: none;
+            font-size: 40px;
+        }
+        .dynamic-txts li span{
+            position: relative;
+        }
+        .dynamic-txts li span::after{
+            content:"";
+            position:absolute;
+            left: 0;
+            height: 100%;
+            width:100%;
+            background:azure;
+            border-left: 2px solid azure;
+            animation: typing 5s steps(15) infinite;
+        }
+        @keyframes typing{
+            100%{
+                left:100%;
+                margin:0 -35px 0 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="static-txt"></div>
+        <ul class="dynamic-txts">
+            <li><span>caroline</span></li>
+            <li><span>caroline wawira</span></li>
+            <li><span>mango pine </span></li>
+            <li><span>apple juice</span></li>
+            <li><span>delmonte juice</span></li>
+        </ul>
+    </div>
+</body>
+</html>

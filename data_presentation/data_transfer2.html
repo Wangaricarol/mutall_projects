@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        .dat{
+         fill: none;
+         stroke: blue; 
+         stroke-width:0.1;
+
+        }
+        .paym{
+            fill:red;
+        }
+        .wtr{
+            fill:blue;
+        }
+        .electr{
+            fill:black;
+        }
+        
+        .change{
+         fill: none;
+         stroke:black; 
+         stroke-width:0.1;
+        }
+        .connect{
+            stroke: transparent;
+            stroke-width: 0.3;
+            fill: none;
+        }
+        .dbase{
+            fill:grey;
+            stroke: black;
+            stroke-width:0.3;
+            opacity:0.1;
+        }
+        .co{
+            fill:darkcyan;
+            stroke:cadetblue;
+            opacity:0.1;
+            stroke-width:0.3;
+        }
+        .datb1{
+            stroke:aqua;
+            stroke-width: 0.1;
+            fill:darkorange;
+            opacity: 0.2;
+        }
+        .datb2{
+            stroke:blueviolet;
+            stroke-width: 0.1;
+            fill:crimson;
+            opacity: 0.2;
+        }
+        .datb3{
+            stroke:black;
+            stroke-width: 0.1;
+            fill:coral;
+            opacity: 0.2;
+        }
+        .labels{
+            font: 200;
+            font-size: 1.5px;
+        }
+        #extract{
+        stroke: black;
+        stroke-width: 0.1;
+        stroke-dasharray: 0.2;
+        fill: none;
+        animation: secondAnimation s linear forwards infinite;
+        }
+        @keyframes secondAnimation {
+          0% {
+              stroke-dasharray: 20;
+              stroke-dashoffset: 20;
+          }
+          30% {
+              stroke-dasharray: 20;
+              stroke-dashoffset: 200;
+          }
+          50% {
+              stroke-dasharray: 60;
+              stroke-dashoffset: 400;
+          }
+          80% {
+              stroke-dasharray: 30;
+              stroke-dashoffset: 200;
+          }
+          100% {
+              stroke-dasharray: 20;
+              stroke-dashoffset: 20;
+          }
+        }
+    </style>
+</head>
+<body>
+  <svg viewbox="0 0 100 100">
+        <!--
+        The data collection-->
+        <path id="extract" d="M 1,2.5 L 19,2.5" class="header"
+             marker-start="url(#markerCircle)"
+             marker-end="url(#arrow)">
+        </path>
+        <text class="labels" x="3" y="2">Data collection</text>
+        <text class="labels" x="3" y="4">(triggers)</text>
+        <!--
+        The data Extraction(sql)-->
+        <path id="extract" d="M 20,2.5 L 38.9,2.5"
+             marker-start="url(#markerCircle)"
+             marker-end="url(#arrow)">
+        </path>
+        <text class="labels" x="27" y="1.6">Extraction</text>
+        <text class="labels" x="28" y="4">(sql)</text>
+        <!--
+        The data Transmission(curl)-->
+        <path id="extract" d="M 39.5,2.5 L 59,2.5"
+            marker-start="url(#markerCircle)"
+            marker-end="url(#arrow)">
+        </path>
+        <text class="labels" x="43" y="1.6">Transmission</text>
+        <text class="labels" x="46" y="4">(curl)</text>
+        <!--
+        The data Ingestion(questionnaire)-->
+        <path id="extract" d="M 60,2.5 L 77,2.5"
+            marker-start="url(#markerCircle)"
+            marker-end="url(#arrow)">
+        </path>
+        <text class="labels" x="65" y="1.6">Ingestion</text>
+        <text class="labels" x="64" y="4">(questionnaire)</text>
+        <!--
+        Arrow markers on the diagram -->
+        <marker
+        id="arrow"
+        viewBox="0 0 16 16"
+        refX="4"
+        refY="4"
+        markerWidth="16"
+        markerHeight="16"
+        orient="auto-start">
+        <path d="M 0 0 L 8 4  L 0 8 z" />
+        </marker>
+        <!--
+        circle markers on the diagram -->
+        <marker 
+            viewBox="0 0 16 16"
+            id="markerCircle" markerWidth="16" markerHeight="4" refX="8" refY="8">
+            <circle cx="8" cy="8" r="8"/>
+        </marker>
+        <!--
+        The database  showing the boundery-->
+       <def>
+        <rect id="strk" x="1" y="5" height="30" width="38"></rect>
+        <rect id="datbrd" x="1" y="5" height="27" width="18.5"></rect>
+        <rect id="datbd" x="1" y="5" height="27" width="19.5"></rect>
+       </def> 
+        <use xlink:href="#strk" transform="translate(59)"class="dbase"></use>
+        <use xlink:href="#strk" transform="translate(0)"class="co"></use>
+        <use xlink:href="#datbrd" transform="translate(0)"class="datb1"></use>
+        <use xlink:href="#datbd" transform="translate(18.6)"class="datb2"></use>
+        <use xlink:href="#datbd" transform="translate(59)"class="datb3"></use>
+        <!-- 
+        The rectangle with the circle inside it -->
+        <def>
+            <g id="ref">
+                <rect height="6" width="4" x="2" y="8" class="dat"></rect>
+                <circle cx="4" cy="10.5" r="0.5" />
+                <circle cx="4" cy="13" r="0.5" />
+            </g>
+        </def>
+        <!--The different circles with different colors -->
+        <g id="chan"> 
+            <use xlink:href="#ref" transform="translate(0,0)" class="paym"></use>
+            <use xlink:href="#ref" transform="translate(0,9)" class="wtr"></use>
+            <use xlink:href="#ref" transform="translate(0,18)" class="electr"></use>
+            <g id="nam">
+                <text class="labels" x="1.5" y="7.4" >payment</text>
+                <text class="labels" x="2" y="16.8" >water</text>
+                <text class="labels" x="1.5" y="25.8" >electricity</text>
+            </g>
+        </g>
+        <!--
+        The changes: 
+        The larger rect representing the changes -->
+        <rect height="12" width="6" x="18" y="10" class="change" ></rect>
+        <!--
+        The circle in the changes rectangle -->
+        <def>
+            <circle cx="21" cy="12" r="0.5" id="rd"/>
+        </def>
+        <!-- 
+        The circle on the changes box -->
+        <use xlink:href="#rd" transform="translate(0,0.5)" class="paym"></use>
+        <use xlink:href="#rd" transform="translate(0,4)" class="wtr"></use>
+        <use xlink:href="#rd" transform="translate(0,8)" class="electr"></use>
+        <!--
+        Texts on the changes box -->
+        <text x="18.5" y="9.7" class="labels">Changes</text>
+        <!--
+        The paths representing the data flow -->
+        <path id=lne d="M 4.5,9.8 L 21,12.5 26,12.5 L 48,12.5 60,12.6 L 75.5, 18.2" class="connect"></path>
+        <path id=lni d="M 4.7,18.8 L 22,16 26,16 L 48,16 60,16 L 75.7, 27 " class="connect"></path>
+        <path id=lin d="M 4,27.3 L 21,20 26,20 L 48,20 60,20 L 75.5, 9.8 " class="connect"></path>
+        <!-- 
+        The animations along the path -->
+        <!-- 
+        The circle representing the payment -->
+        <circle cx="0" cy="0"  r="0.5" fill="red">
+            <animateMotion dur="8s" repeatCount="indefinite">
+                <mpath href="#lne" />
+            </animateMotion>
+        </circle>
+        <!-- 
+        The circle representing the water -->
+        <circle cx="0" cy="0"  r="0.5" fill="blue">
+            <animateMotion dur="8s" repeatCount="indefinite">
+                <mpath href="#lni" />
+            </animateMotion>
+        </circle>
+        <!-- 
+        The circle representing the electricity -->
+        <circle cx="0" cy="0"  r="0.5" fill="black">
+            <animateMotion dur="8s" repeatCount="indefinite">
+                <mpath href="#lin" />
+            </animateMotion>
+        </circle>
+        <!--
+        The last three boxes and the circles in it -->
+        <use xlink:href="#ref" transform="translate(72,9)" class="paym"></use>
+        <use xlink:href="#ref" transform="translate(72,18)" class="wtr"></use>
+        <use xlink:href="#ref" transform="translate(72,0.5)" class="electr"></use>
+        <!-- 
+        The title-->
+        <use xlink:href="#nam" transform="translate(72,0)"></use>
+        <text class="labels" x="12" y="33">Mutall C.O</text>
+        <text class="labels" x="19" y="33">(mutall.co.ke)</text>
+        <text class="labels" x="65" y="34.2">Mutall D.O</text>
+        <text class="labels" x="72" y="34.2">(http://206.189.207.206)</text>
+        <text class="labels" x="35" y="40">MUTALL DATA MIGRATION</text>
+        <text class="labels" x="40" y="43">DEMONSTRATION</text>
+    </svg>
+    <button id="go" hidden>go</button>
+    <button id="cancel" hidden>cancel</button>  
+</body>
+</html>

@@ -1,0 +1,30 @@
+circle_move(ev:MouseEvent, group:SVGElement):void{
+		
+		//
+		//
+		//4. Remove the selected entity from the canvas
+		group.classList.remove('.selected');
+		// 
+		//4.1 Get the parent svg element of the entity group
+		// Select the svg element from the content tag
+		const svg =document.querySelector('this.svg');
+		// 
+		// Get the parent svg element
+		const div = svg?.parentNode;
+		//
+		//4.2 Remove the group (child) from the parent element
+		// a)Get the group tag from the svg element
+		const engrp = document.getElementById('#event');
+		// 
+		// b)Remove the group
+		const eventcircle = div!.removeChild(engrp!);
+		// 
+		// // Remove the child element entity without
+		// //  having to specify its parent node
+		// const node = document. getElementById('event');
+		// if (node?.parentNode){
+		// 	node.parentNode.removeChild(node);
+		// }
+
+		
+	}

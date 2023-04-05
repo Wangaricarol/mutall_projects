@@ -1,0 +1,39 @@
+
+
+	// //Calculate the mid point of 
+	// get_mid_point_v1(c1:entity, c2:entity):point{
+	// 	//
+	// 	const result:point = {
+	// 		x: (c2.x-c1.x)/2 + c1.x, 
+	// 		y:(c2.y-c1.y)/2 + c1.y}
+	// 	//
+	// 	return result;
+	// }
+
+	// //The second version of calculating the exact mid point
+	// get_mid_point(from:entity, to:entity):point{
+	// 	//
+
+	// }
+
+    // 			POLYLINE
+		// Create a polyline
+		const p:SVGPolylineElement = document.createElementNS(svgns,"polyline");
+		// 
+		//Attaching the line to the svg element
+		svg.appendChild(p);
+		// 
+		// get the mid p2 of the line c2-c1/2 + c1;
+		// define the points
+		//
+		const mid:point = this.get_mid_point_v1(activity, event);
+
+		//
+		const p1 =`${event.x},${event.y}`;
+		const p2=`${mid.x}, ${mid.y}`;
+		const p3 =`${activity.x},${activity.y}`;
+		// 
+		// Set the polyline attribute
+		p.setAttribute('points', `${p1},${p2},${p3}`);
+// Attach the marker to the polyline
+p.setAttribute("marker-mid","url(#arrow)");

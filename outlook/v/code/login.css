@@ -1,0 +1,29 @@
+/*This settings are for projection purpose.*/
+html {
+	font-size: 30px;
+}
+input {
+	margin: 5px 5px 5px 5px;
+}
+label {
+	display: flex;
+	flex-direction: row;
+	border: 1px solid #e2e3e3;
+	width: fit-content;
+	background-color: #e2e3e3;
+	margin: 1%;
+}
+button {
+	width: fit-content;
+	height: 50px;
+	font-size: 38px;
+}
+#user_name,
+#password {
+	margin-left: 3%;
+	height: auto;
+	width: 50%;
+}
+[type="radio"] {
+	width: 30px;
+}

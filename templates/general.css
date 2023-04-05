@@ -22,7 +22,9 @@ label {
     /* float: right; */
     margin: .5% 0;
 }
-
+table{
+    margin: 5px;
+}
 table,
 td,
 th {
@@ -44,4 +46,8 @@ textarea {
     width: 100%;
     height: 150px;
     color: tomato;
+}
+
+#cost{
+    display: flex;
 }

@@ -16,6 +16,10 @@
                 padding-top: 10px;
             }
         }
+
+        table {
+            font-size: 24px;
+        }
     </style>
 </head>
 
@@ -115,6 +119,8 @@
             </label>
         </div>
     </fieldset>
+
+
 
     <fieldset
         data-dbname="mutall_tracker"
@@ -342,7 +348,6 @@
         <button type="button">Add New Row</button>
     </fieldset>
 
-    
     <div id="programming_languages"
         data-dbname="mutall_tracker"
         data-ename="intern"
@@ -538,92 +543,97 @@
     <fieldset>
         <legend>Who is your next of Kin?</legend>
         <label>
-                <span>Full Name</span>
-                <input
-                    data-dbname="mutall_tracker"
-                    data-ename="kin"
-                    name="name"
-                    type="text"
-                    maxlength="25"
-                    value="carl"
-                    />
+            <span>Full Name</span>
+            <input
+                data-dbname="mutall_tracker"
+                data-ename="kin"
+                name="name"
+                type="text"
+                maxlength="25"
+                value="carl"
+            />
+        </label>
+        <label>
+            <span>Email</span>
+            <input
+            data-dbname="mutall_tracker"
+            data-ename="kin"
+            name='email'
+            type="text"
+            maxlength="25"
+            value="fans@gmail.com">
             </label>
         <label>
-                <span>Email</span>
-                <input
-                    data-dbname="mutall_tracker"
-                    data-ename="kin"
-                    name='email'
-                    type="text"
-                    maxlength="25"
-                    value="fans@gmail.com">
-            </label>
-        <label>
-                <span>ID Number</span>
-                <input
-                    data-dbname="mutall_tracker"
-                    data-ename="kin"
-                    name="ID"
-                    type="text"
-                    maxlength="10"
-                    value="32685426">
-            </label>
+            <span>ID Number</span>
+            <input
+            data-dbname="mutall_tracker"
+            data-ename="kin"
+            name="ID"
+            type="text"
+            maxlength="10"
+            value="32685426">
+        </label>
     </fieldset>
-    <fieldset>
-        <legend> Select mode of payment</legend> 
-        <label>
-            <input
-                data-dbname="mutall_tracker"
-                data-ename="intern"
-                name="attachment" 
-                type="radio" 
-                onclick="Main.show_panel(false, 'end_date');
-                        Main.show_panel(false, 'icdl_date')"
-                value="post_graduate"
-                checked
-            />
-        </div>
-            <span>M-pesa</span>
-        </label>
-        <label>
-            <input
-                data-dbname="mutall_tracker"
-                data-ename="intern"
-                name="attachment" 
-                type="radio" 
-                onclick="Main.show_panel(true, 'end_date');
-                        Main.show_panel(false, 'icdl_date')"
-                value="under_graduate"
-                checked
-            />
-            <span>Cash</span>
-        </label>
-        <label>
-            <input
-                data-dbname="mutall_tracker"
-                data-ename="intern"
-                name="attachment" 
-                type="radio" 
-                onclick="Main.show_panel(true, 'end_date');
-                        Main.show_panel(false, 'icdl_date')"
-                value="under_graduate"
-                checked
-            />
-            <span>Bank slip</span>
-        </label>
+        <!--
+    Payment section -->
+    <div id="paym">
+        <fieldset class="user">
+            <legend>Cost of internship tuition</legend>
 
-        <div id="end_date" hidden>
-            <label>
-                <span>End Date:</span>
-                <input
-                    data-dbname="mutall_tracker"
-                    data-ename="intern"
-                    name='end_date' 
-                    type="date"
-                >                    
-            </label>
-        </div>
-    </fieldset>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description of the service </th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tution fee</td>
+                        <td>x months</td>
+                        <td> per month</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Server services</td>
+                        <td> 1 month</td>
+                        <td>500 per month</td>
+                        <td></td>
+                    </tr>    
+                    <tr>
+                        <td>Tea services</td>
+                        <td>1 month</td>
+                        <td>500</td>
+                        <td></td>
+                    </tr> 
+
+                    <tr>
+                        <td> Stationary</td>
+                        <td>1 month</td>
+                        <td>5000</td>
+                        <td></td>
+                    </tr> 
+
+                    <tr>
+                        <td>Laptop charges</td>
+                        <td>1 month</td>
+                        <td>4,000</td>
+                        <td></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>Accomodation per month</td>
+                        <td>1 month</td>
+                        <td>7,000</td>
+                        <td></td> 
+                    </tr> 
+                    <td>Total amount</td>
+                </tbody>
+            </table>
+        </fieldset>
+    </div>
     <button id="go">Go</button>
     <button id="cancel">Cancel</button>
 </body>

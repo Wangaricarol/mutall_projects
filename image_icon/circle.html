@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Document</title>
+        <style>
+            html{
+                height:100%;
+            }    
+            body{
+                height:100%;
+            }    
+            svg{
+                background-color: aqua;
+                height:90%;
+                z-index: 0;
+            }
+            line {
+                stroke-dasharray:1;
+                stroke: black;
+                
+            }
+
+            circle {
+                fill: none;
+                stroke: blue;
+            }
+            rect{
+                fill:none;
+                stroke:bisque;
+            }
+
+            /*
+            This is the joining line*/
+            #joint{
+                stroke-dasharray:none;
+                stroke: coral;
+                z-index: 1;
+            }
+            #large{
+                fill:green;
+                z-index:2;
+            }
+            .small{
+                fill:bisque;
+            }
+            text{
+                text-anchor: middle;
+                font-size:3px;
+                fill: blue;
+            }
+          
+        </style>
+    </head>
+    <body>
+        <svg viewbox="0 0 100 50">
+            <line x1="0" y1="12.5" x2="100" y2="12.5"/>
+            <line x1="0" y1="25" x2="100" y2="25"/>
+            <line x1="0" y1="37.5" x2="100" y2="37.5"/>
+            <line x1="25" y1="0" x2="25" y2="50"/>
+            <line x1="50" y1="0" x2="50" y2="50"/>
+            <line x1="75" y1="0" x2="75" y2="50"/>
+            <circle cx="25" cy="37.5" r="8" id="large"/>
+            <text x="25" y="39">Content</text>
+            <circle cx="75" cy="12.5" r="5" class="small" />
+            <text x="75" y="14">node</text> 
+            <line x1="25" y1="37.5" x2="75" y2="12.5" id='joint'/>
+            <text transform="translate(50,24) rotate(-26)">Joint</text>
+            <!-- <line x1="32.15" y1="33.92" x2="75" y2="12.5" class="joint"/> -->
+            <rect height="50" width="100"/>
+
+
+        </svg>
+        <script>
+            //
+            //The radius of the large circle
+            const r1=8;
+            //
+            //The x-coordinate to the larger circle
+            const largex=25;
+            //
+            //The y-coordinate of the larger circle
+            const largey=37.5;
+            //
+            //The y-coordinate of the smaller circle
+            const smally=12.5;
+            //
+            //The x-coordinate of the smaller circle
+            const smallx=75;
+            //
+            //The radius of the smaller circle
+            const r2=5;
+            //
+            //calculate the distance of elevation of the line
+            const incX=(smallx-largex);
+            const incY=(largey-smally);
+            //
+            //Obtain the angle of elevation from the center of the larger
+            //circle to the center of the smaller circle
+            const theta= Math.atan(incY/incX);
+            //
+            //Calculate the distance from the center of the larger circle to the
+            //point at which the line intersects the larger circle
+            const dx=Math.cos(theta)*r1;
+            const dy= Math.sin(theta)*r1;
+            //
+            //Obtain the the points at which the line intersect the larger circle
+            const pointX= largex+dx;
+            const pointY=largey-dy;
+            console.log(pointX, pointY);
+            //
+            //Get the joining line
+            const line= document.querySelector(".joint");
+            //
+         </script>
+    </body>
+</html>

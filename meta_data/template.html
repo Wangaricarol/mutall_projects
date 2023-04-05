@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>metavisuo</title>
+        <meta charset="UTF-8">
+        <style>
+            html{
+                height: 100%;
+            }
+            body{
+                height:100%;
+                display: grid;
+                grid-template-rows:11% 89%;
+                overflow-y: hidden;
+                margin: 0;
+                padding: 0;
+            }
+            #header{
+                grid-template-rows:11%;
+                position: sticky;
+                background-color: aqua;
+            }
+            .subheading{
+                word-spacing: 20px;
+            }
+            #content{
+                overflow-y: hidden;
+                grid-template-rows:89%;
+                background-color: bisque;
+            }
+            svg{
+                height: 100%;
+                width: 80%;
+                background-color:whitesmoke;
+                margin-right: 10%;
+                margin-left: 10%;
+                }
+            circle{
+                stroke:none;
+                stroke-width: 0.2px;
+                fill:black;
+                } 
+            line{
+                stroke: black;
+                stroke-width:0.2px;
+            }
+            text{
+                fill: white;
+                font-size: 20%;
+            }
+            polyline{
+                fill: none;
+                stroke: red;
+                stroke-width: 0.4px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <!--
+        The header section-->
+        <div id="header">
+            <div class="subheading">
+                entity operations, selected, view
+            </div>
+            <button id="zoom in">&#43</button>
+            <button id="zoom out">&#45</button>
+            <button id="icon">&#94</button>
+            <button id="icon">&#60</button>
+            <button id="icon">&#62</button>
+            <button id="icon">&#86</button>
+            <select id="pages"></select>
+            <button id="icon">close database</button>
+        </div>
+        <!--
+        The content section-->
+        <div id="content">
+            <!-- 
+            The svg where am drawing my pictures -->
+            <svg viewbox="0 0 128 64" id="canvas"></svg>
+        </div>
+        
+        <button id="go" hidden>go</button>
+        <button id="cancel" hidden>cancel</button> 
+    </body>
+</html>

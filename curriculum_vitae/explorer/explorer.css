@@ -16,7 +16,7 @@ body {
     grid-column: 1/4;
     /* starts on the first horizontal line, and ends on the second horizontal line */
     grid-row: 1/2;
-    background-color: antiquewhite;
+    background-color: brown;
     text-align: center;
     font-size: 30px;
     font-weight: 900;
@@ -45,38 +45,3 @@ body {
     overflow-y:auto;
     overflow-x: auto;
 }
-
-/*
-The images are the same height as the current font*/
-img{   height:1em; }
-
-/*
-Align the tree selector with the toggle button*/
-.selector{display:inline; }
-
-/*
-Indent the children by 2 times the font sizes*/
-.children{margin-left: 2em}
-
-/*
-Display the table rows in the list view in alternating
-backgrounds*/
-
-/*
-Specify border for the table*/
-td{
-    border: 1px solid lightgrey;
-}
-/*
-By default the list view is displayed in the normal mode*/
-.edit{
-    display: none;
-}
-
-/*
-Hovered-on selections are shown with a cyan background*/
-.hovered{background-color: cyan}
-
-/*
-Selected selections are show with a blue background and white text*/
-.selected{background-color: blue; color:white;}

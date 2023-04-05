@@ -1,0 +1,84 @@
+	// 
+		// The polyline with the names attributes.
+		// create a polyline
+		const poly:SVGPolylineElement =<SVGPolylineElement> document.createElementNS(meta_visuo.svgns,"polyline");
+		// 
+		//Attaching the line to the svg element
+		meta_visuo.svg.appendChild(poly);
+		
+		// Set the polyline attribute
+
+		const pol1 = 32,32;
+		const pol2 = 32,28
+		const pol3 = 32,24
+		const pol4 = 32,20
+		const pol5 = 32,16
+		const pol6 = 32,12
+		('points', `${p1},${p2},${p3}`);
+
+		poly.setAttribute('points',`${pol1},${pol2},${pol3},${pol4},${pol5},${pol6}` );
+		// 
+		// Attach the marker to the polyline
+		poly.setAttribute("marker-mid","url(#mline)");
+
+		// 		THE ARROW MARKER
+		// Provide the marker namespace
+		const mk:SVGMarkerElement = <SVGMarkerElement>document.createElementNS(meta_visuo.svgns,"marker");
+		// 
+		//Attaching the marker to the svg element
+		meta_visuo.svg.appendChild(mk);
+		// 
+		//Attaching the chickenfoot marker to the svg element
+		//meta_visuo.svg.appendChild(n);
+        // 
+		// // Supply the arrow marker attributes
+		mk.setAttribute("viewBox","0 0 16 16");
+		mk.setAttribute("id","mline");
+		mk.setAttribute("refX","10");
+		mk.setAttribute("refY","10");
+		mk.setAttribute("markerWidth","1");
+		mk.setAttribute("markerHeight","10");
+		mk.setAttribute("orient","auto");
+
+		// 		THE ARROW PATH
+		// The namespace drawing the arrow marker path.
+		const lmk:SVGPathElement = <SVGPathElement>document.createElementNS(meta_visuo.svgns,"line");
+		// 
+		// Draw the arrow path
+		lmk.setAttribute("d","1 2 5 2");
+		// 
+		// Append the marker path to the arrow marker.
+		mk.appendChild(lmk);
+		
+        
+        //
+		function add_text(x: number, y:string, name:string,translate:number ):SVGTextElement{
+			//
+			//the first circle
+			const label=document.createElementNS(svgns,"label");
+			//
+			//Append the text(label) to the svg 
+			svg.appendChild(label);
+			//
+			//Set the x value
+			label.setAttribute("x", "32");
+			//
+			//Set the cy value
+			label.setAttribute("y",y);
+			//
+			//Set the radius
+			label.setAttribute("textContent","name" );
+			//
+			//Adding the text in the circle
+			label.setAttribute("transform=translate","2,1" );
+			// 
+			// Create text
+			const text:SVGTextElement = document.createElementNS(svgns, "text");
+			//
+			//Append the text to the svg element
+			svg.appendChild(text);
+			// 
+			
+			return label;
+		}
+		

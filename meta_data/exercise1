@@ -1,0 +1,687 @@
+//
+//Import app from the outlook library.
+import * as outlook from "../../../outlook/v/code/outlook.js";
+
+import * as app from "../../../outlook/v/code/app.js";
+//
+import { checkbox, io } from "../../../outlook/v/code/io.js";
+//
+//Import server
+import * as server from "../../../schema/v/code/server.js";
+//import { encryption } from "../../../outlook/v/node/test.js";
+//
+//Import schema.
+import * as schema from "../../../schema/v/code/schema.js";
+//
+//Resolve the reference to the library
+import * as lib from "../../../schema/v/code/library";
+//
+//Resolve the iquestionnaire
+import * as quest from "../../../schema/v/code/questionnaire.js";
+//
+//Resolve the reference to the journal interface
+import * as mod from "../../../outlook/v/code/module.js";
+//
+//
+import { basic_value } from "../../../schema/v/code/library";
+import { textarea } from '../../../outlook/v/code/io';
+import { label } from '../../../schema/v/code/questionnaire';
+import { content } from '../../../m_projects/diagrm/tree';
+//
+//System for tracking assignments for employees of an organization.
+//
+//A column on the application database that is linked to a corresponding one
+//on the user database. Sometimes this link is broken and needs to be
+//re-established.
+type replica = { ename: string; cname: string };
+//
+//Intern information collected is used in two cases, when reporting and when
+//editing
+type usage =
+	| {
+			purpose: "report";
+	  }
+	| { purpose: "edit" };
+//
+//The type of intern data collected for reporting purposes.
+type intern_data = {
+	intern: {
+		name: string;
+		email: string;
+		title: string;
+		language: string;
+		requirements: string;
+	};
+	kin: { name: string; email: string; phone: string };
+	certification: Array<{
+		certificate_name: string;
+		institute: string;
+		start_date: string;
+		end_date: string;
+	}>;
+	attachment: Array<{
+		company: string;
+		designation: string;
+		start_date: string;
+		end_date: string;
+	}>;
+	sponsor: { name: string; email: string; phone: string };
+	referee: { name: string; email: string; phone: string };
+};
+//
+//Main application
+export default class main extends app.app {
+	//
+	public writer: mod.writer;
+	public messenger: mod.messenger;
+	public accountant: mod.accountant;
+	public scheduler: mod.scheduler;
+	//
+	//Initialize the main application.
+	constructor(config: app.Iconfig) {
+		super(config);
+		//
+		this.writer = new mod.writer();
+		this.messenger = new mod.messenger();
+		this.accountant = new mod.accountant();
+		this.scheduler = new mod.scheduler();
+	}
+	//
+	//Returns all the inbuilt products that are specific to
+	//this application
+	get_products_specific(): Array<outlook.assets.uproduct> {
+		return [
+			{
+				id: "actions",
+				title: "Actions",
+				solutions: [
+					{
+						title: "View due assignments",
+						id: "view_due_assignments",
+						listener: ["event", () => this.vue_due_assignments()]
+					}
+				]
+			},
+			{
+				id: "metavisuo",
+				title: "Metavisuo",
+				solutions: [
+					{
+						title: "Metavisuo",
+						id: "meta_data",
+						listener: ["event", () => this.view_meta_data()]
+					}
+				]
+			},
+			{
+				id: "simulating_data",
+				title: "Simulating data graph",
+				solutions: [
+					{
+						title: "Simulating data",
+						id: "simulating_data",
+						listener: ["event", () => this.view_simulating_data()]
+					}
+				]
+			},
+			{
+				id: "lvl2_registration",
+				title: "Registration",
+				solutions: [
+					{
+						title: "View Intern Information",
+						id: "view_intern",
+						listener: ["event", () => this.view_intern_information()]
+					},
+					
+				]
+			}
+		];
+	}
+
+	//
+	//Viewing the data migration diagram  
+	async view_meta_data(){
+		//
+		// Getting the data migration file
+		const Meta_visuo=new meta_visuo(this,"../../../tracker/v/templates/metavisuo.html");
+		Meta_visuo.administer();
+	}
+	//
+	//Viewing the data migration diagram  
+	async view_simulating_data(){
+		//
+		// Getting the data migration file
+		const migrate=new svg_migration_data(this,"../../../m_projects/svg_2/dat.html");
+		migrate.administer();
+	}
+	//
+	//List all assignments that are due and have not been reported.
+	//Ordered by Date.
+	vue_due_assignments(): void {
+		alert("This method is not implemented yet.");
+		//const data = encryption("encryption");
+		//alert(data);
+	}
+	//
+	//View information about an intern
+	async view_intern_information(): Promise<void> {
+		//
+		//1. Select the intern from the table
+		await this.get_selected_intern();
+		//
+	}
+	//
+	//Get the selected intern
+	async get_selected_intern(): Promise<void> {
+		//
+		//1. Get the selected intern
+		const tr: HTMLTableRowElement = this.document.querySelector(
+			"#content>table>tbody>.TR"
+		)!;
+		//
+		//When the administrator tries to view information about an intern, prompt
+		//him/her to select a message. And stop the execution of the program
+		if (tr === null)
+			throw new schema.mutall_error(
+				"NO INTERN was selected to reply. SELECT an INTERN and try again"
+			);
+		//
+		//2. Get the primary key of the selected message
+		const pk: string = tr.getAttribute("pk")!;
+		//
+		//3. Save the primary key of the selected intern
+		localStorage.setItem("intern", pk);
+	}
+}
+
+//
+//Define the namespace  needed to create svg elements
+const svgns = "http://www.w3.org/2000/svg";
+		
+//
+//displaying the metavisuo chart
+class meta_visuo extends outlook.terminal{
+	//
+	//Ths is the svg propety
+	public svg?:SVGElement;
+	//
+	//Define the circle radius
+	circleradius:number=5;
+	
+	//Set the view box properties
+	//
+	//Set the panning attributes of a view box
+	panx:number = 0; 
+	pany:number=0;
+	//
+	//Set the scaling attributes of a view box
+	zoomx:number=128; 
+	zoomy:number=64;
+	// 
+	x:number;
+	y:number;
+	// 
+	//class constructor
+	constructor(mother:main,file:string){
+		super(mother,file);
+	}
+	
+	//Override the show panels on the outlook library
+	public async show_panels(): Promise<void> {
+		//
+		// 1.DEFINE THE SVG.
+		//
+		// Get the content element from the html file
+		const content=this.get_element('content');
+		// 
+		//Get the content element from our html file
+		this.svg=<SVGElement>this.document.createElementNS(svgns,"svg");
+		// 
+		// Attach the svg to the content
+		content.appendChild(this.svg);
+		//
+		//Add the view box attribute, based on the zoom and pan settings
+		this.svg.setAttribute("viewBox",`${[this.panx, this.pany, this.zoomx, this.zoomy]}`);
+		//
+		//Draw the complete data model
+		//this.model_draw();
+
+		//Draw test circle
+		this.test_draw(64,32);
+		
+	}
+	// 
+	//Draw a circle at the center of the canvas. Wen you click on the svg, 
+	test_draw( centerx:number,centery:number):SVGCircleElement{
+		
+		//
+		//Draw the circle here and append to the svg
+		const circle:SVGCircleElement = document.createElementNS(svgns,"circle");
+		//
+		//Add an event listener for movin the circle to the divle clicked poaition
+		this.svg!.ondblclick = (ev)=>this.test_move(ev, circle);
+		
+
+			// 
+		// Set the x coordinate of the centre of the circle
+		circle.setAttribute("cx",`${centerx}`);
+		// 
+		// Set the y coordinate of the centre of the circle
+		circle.setAttribute("cy",`${centery}`);
+		// 
+		// Set the circle radius.
+		circle.setAttribute("r",`${this.circleradius}`);
+				//		 
+		//Attach the circle to the svg element
+		this.svg!.appendChild(circle);
+		// 
+		return circle;
+	}
+
+	test_move(ev:MouseEvent, circle:SVGCircleElement):void{
+		//
+		const new_position = this.entity_get_new_position(ev, circle);
+		//
+		circle.cx.baseVal.value= new_position.x;
+		circle.cy.baseVal.value= new_position.y;
+		
+	}
+	//Draw the data model
+	model_draw():void{
+		//
+		//Add an event listener for translating the selected entity to a new random position within the
+		//svg viewbox
+		this.svg!.ondblclick = (ev)=>this.entity_move(ev);
+		//
+		//Define the tick mark
+		this.marker_define("mline");
+		
+		//Draw the event entity
+		this.entity_draw('event',32, 32, ['id', 'user', 'frequency', 'start_date', 'end_date','referee','sitting'],30 );
+		//
+		this.entity_draw('activity', 65, 23, ['name', 'date']);
+		// 
+		this.entity_draw('plan', 80,42,['percent','test','exam']);
+	}
+
+	//This is an event listener for moving the center of the selected entity's circle to the
+	//double clicked position
+	entity_move(ev:MouseEvent):void{
+		//
+		//Get the selected entity
+		const entity= <SVGGraphicsElement|null>this.document.querySelector('.selected');
+
+		//If there is none, do not contine (without crashing) the processing 
+		if (entity===null) return;
+		//
+		//Get the cordinates of the of the centre of the entity's circle
+		const circle:{x:number, y:number} = this.entity_get_coordinates(entity);
+		//
+		//Get the coordinates of the double-clicked  position (in real units)
+		const position:DOMPoint = this.entity_get_new_position(ev, entity);
+		//
+		//Calculate the x and y translations;
+		const xtranslate = position.x - circle.x;
+		const ytranslate = position.y - circle.y
+		// 
+		//Translate the selected entity to the new position
+		entity.setAttribute('transform', `translate(${xtranslate}, ${ytranslate})`);
+
+	}
+	//
+	//Get the coordinates of the of the centre of the entity's circle
+	entity_get_coordinates(entity:SVGGraphicsElement):{x:number, y:number}{
+		//
+		//Get the circle that is within the entity group
+		const circle:SVGCircleElement|null = entity.querySelector('circle');
+		//
+		//If no circle is found, then somthing must have gone wrong. CRASH
+		if (circle===null) throw 'This entity group has no circle!!!' 
+		//
+		//Get the x coordinate, cx, of the cirle
+		const x:number = circle.cx.baseVal.value;
+		//
+		//Get the y cordinate of the circle
+		const y:number = circle.cy.baseVal.value;
+		//
+		//Return the coordinate
+		return {x, y};
+	}
+	// 
+	//Get the coordinates of the double-clicked  position (in real units)
+	
+	//Get the coordinates of the double-clicked  position, given the event generated by the
+	//double clicking. This proceeds as follows:-
+	entity_get_new_position(ev:MouseEvent, element:SVGGraphicsElement):DOMPoint{
+		//
+		//-Get the mouse coordinates (in pixels) where the clicking occured on the canvas. Use
+		//screen coordinates, rather than the client. Why?
+		const x:number = ev.clientX;
+		const y:number = ev.clientY;
+		//
+		//-Convert the mouse pixel coordinates to the real world coordinates, given our current viewbox
+		//
+		//Use the x and y pixels to define an svg point
+		const point_old:DOMPoint = new DOMPoint(x,y); 
+		//
+		//Get the CTM matrix which transforms a real world coordinate to pixels.
+		const ctm:DOMMatrix|null = element.getCTM();
+		//
+		//If the ctmis null, then something is unusual. CRASH
+		if (ctm===null) throw 'A null dom matrix was not expected';
+		//
+		//BUT we want pixesl to real world, i.e., the inverse of the CTM
+		const ctm_inverse:DOMMatrix = ctm.inverse();
+		console.log(ctm_inverse);
+		
+		//
+		//Use the invrese matrix of the CTM matrix to transform the old point to new one
+		const point_new:DOMPoint = point_old.matrixTransform(ctm_inverse); 
+		// alert(`points are ${point_new}`);
+		//
+		return point_new;
+	
+	}
+
+	// 
+	//Draw a database entity, complete with all her attributes
+	public async entity_draw(
+		//
+		//The name of the entity
+		name:string,
+		//
+		//The center  of the circle
+		centerx:number, centery:number,
+		//
+		//The attributes
+		attributes:Array<string>,
+		//
+		//Slanting angle for the attributes from the vertical axis
+		angle:number=0
+
+	): Promise<SVGElement> {
+		//
+		//Draw the circe of the entity and retun the circle element
+		const circle:SVGCircleElement = this.entity_draw_circle(centerx, centery);
+		// 
+		//Draw the labels of the entity and return an element under which all the lebeling elements
+		//are grouped
+		const labels:SVGElement = this.entity_draw_attributes(centerx, centery, attributes, angle);
+		//
+		//Draw the entity text and return the text element
+		const text:SVGTextElement = this.entity_draw_text(name, centerx, centery);
+		//
+		//Group the elements that define an entity
+		const entity:SVGElement = this.entity_draw_group(circle, labels, text); 
+		//
+		return entity;
+	}
+	// 
+	//Create a group that puts the entity circle,labels and text into a single
+	//group
+	entity_draw_group(circle:SVGCircleElement, labels:SVGElement, text:SVGTextElement):SVGElement{
+		// 
+		// Create the entitygroup tag
+		const group:SVGElement = document.createElementNS(svgns,"g");
+		// 
+		//Attach the circle, labels and tsxt eleents to the entity group
+		group.append(circle, labels, text); 
+		//
+		//Atach the entity group to the svg
+		this.svg!.appendChild(group);
+		//
+		// Add an event lister such that when this entity is selected, the selection is removedfrom
+		//any other entity that is selected and this becpmes select 
+		group.onclick=()=>this.entity_select(group);
+		// 
+		//Return the entity group
+		return group;
+	}
+	// 		
+	//select the current one
+	entity_select(current:SVGElement){
+		//
+		//Get the entity that was previously selected
+		const previous:HTMLElement|null = this.document.querySelector('.selected');
+		//
+		//If there is any, deselect it
+		if (previous!==null) previous.classList.remove('selected');
+		//
+		//Mark the current one as selected
+		current.classList.add('selected');
+	}
+	
+	//Draw the entity element 
+	entity_draw_circle(centerx:number, centery:number):SVGCircleElement{
+		//		
+		//Create the circle element to represent an entity  
+		const c:SVGCircleElement = document.createElementNS(svgns,"circle");
+		// 
+		//Attach the circle to the svg element
+		this.svg!.appendChild(c);
+		// 
+		// Set the x coordinate of the centre of the circle
+		c.setAttribute("cx",`${centerx}`);
+		// 
+		// Set the y coordinate of the centre of the circle
+		c.setAttribute("cy",`${centery}`);
+		// 
+		// Set the circle radius.
+		c.setAttribute("r",`${this.circleradius}`);
+		 //
+		return c;
+	}
+
+	// 
+	// Draw the name of the entity represented on the diagram
+	entity_draw_text(name:string,centerx:number,centery:number):SVGTextElement{
+		// 
+		// Create the text element to representan entity
+		const text:SVGTextElement =document.createElementNS(svgns,"text");
+		// 
+		// Attach the text to the svg element
+		this.svg!.appendChild(text);
+		// 
+		// Set the x and y coordinates of the text
+		text.setAttribute("x",`${centerx}`);
+		text.setAttribute("y",`${centery}`);
+		// 
+		// Set the text position of the entity
+		text.setAttribute("text-anchor","middle");
+		text.textContent= (`${name}`);
+		//
+		return text;
+	}
+	//Draw the labels for an entity that has the given center coordinates and the list of labels 
+	entity_draw_attributes(
+		//
+		// The center of the circle the starting point
+		centerx:number,
+		//
+		centery:number,
+		// 
+		labels:Array<string>,
+		//
+		//The angle of the label, relation to the vertical axis
+		angle:number
+	):SVGElement{
+
+		// 					GROUPING THE ELEMENTS
+		// 
+		//Create a group tag for placing all our attributes
+		const g:SVGElement = document.createElementNS(svgns,"g");
+		// 
+		// Attach the group element to the svg tag
+		this.svg!.appendChild(g);
+		// 
+		// Rotate the g tag about the center 
+		g.setAttribute("transform",`rotate(${angle},${centerx}, ${centery})`);
+		// 
+		// 					THE POLYLINE
+		// Create the polyline element 
+		const poly:SVGPolylineElement = document.createElementNS(svgns,"polyline");
+		// 
+		//Attach the polyline to the svg element
+		g.appendChild(poly);
+		//
+		//Get the points that define the label segments
+		//Create a new array (values)by populating it with the results of the labels
+		const values:Array<string>=labels.map((lables,i)=>{return `${centerx},${centery-this.circleradius - 4*i}`});
+		// 
+		//Create,return and link a new string point to the value array 
+		const points:string= values.join(",");
+		// 
+		// Define the polyline segments 
+		poly.setAttribute('points', points);
+
+		// Attach the markers to the polyline segments
+		poly.setAttribute("marker-mid","url(#mline)");
+		poly.setAttribute("marker-end","url(#mline)");
+		// 
+		// 					GROUPING THE TEXT ELEMENTS
+		// Create a group tag element for the text
+		// (gtext) to differentiate from the main group 
+		const gtext= document.createElementNS(svgns,"g");
+		//
+		// Attach the gtext group to the group tag above
+		g.appendChild(gtext);
+		// 
+		//Definine the top and left margins of the labels
+		const left:number=2;
+		const top:number=1;
+		//
+		// Provide  top and and left margins for the text label  
+		gtext.setAttribute("transform",`translate(${left},${top})`);
+		//
+		//For each text,draw the label
+		labels.forEach((label, i)=>this.attribute_draw(centerx, centery, label, i,gtext));
+		//
+		//Return the attribute group
+		return g;
+	}
+	// 
+	//name
+	marker_define(
+		//Identifier neded for referencing this marker 
+		id:string
+	):void{
+
+		// 		  DRAW THE LINE  MARKER
+		//
+		// Creating the marker element
+		const marker:SVGMarkerElement =<SVGMarkerElement>document.createElementNS(svgns,"marker");
+		
+		// 
+		//Attach the marker to the svg element
+		this.svg!.appendChild(marker);
+		// 
+		// Supply the marker attributes
+		//
+		//Define the marker view box
+		const panx:number = 0;
+		const pany:number=0;
+		// 
+		// Set the width of the viewport into which the <marker> is to be fitted when it is rendered according to the viewBox
+		const realx:number = 16;
+		// 
+		// Set the height of the viewport into which the <marker> is to be fitted when it is rendered according to the viewBox 
+		const realy: number =16;
+		//
+		//Marker size (pixels)
+		// set the marker height of the marker
+	    const tickheight:number=8;
+		// 
+		// Set the marker width of the marker
+		const tickwidth: number=8;
+		//
+		//Set the marker view box
+		marker.setAttribute("viewBox",`${[panx, pany, realx, realy]}`);
+		//
+		//Set the name of the marker
+		marker.setAttribute("id", id);
+		//
+		//
+		//Set the reference point for the marker to be the center of the viewbox
+		//Define the x coordinate of the marker referencing point
+		marker.setAttribute("refX",`${0.5*realx}`);
+		// 
+		//Define the y coordinate of the marker referencing point
+		marker.setAttribute("refY",`${0.5*realy}`);
+
+		marker.setAttribute("markerWidth",`${tickwidth}`);
+		marker.setAttribute("markerHeight",`${tickheight}`);
+		//
+		//Define a tick mark
+		const mark = this.marker_define_tick();
+		// 
+		// Attach the line marker to the marker element
+		marker.appendChild(mark);
+	}
+
+	// 
+	marker_define_tick():SVGLineElement{
+		//
+		// Creating the line marker.
+		const mark:SVGLineElement = <SVGLineElement >document.createElementNS(svgns,"line");
+		//
+		//Daw the line that repersents a tick mark
+		// The x1 coordinate of the tick mark
+		const linetickx1:number=8;
+		// 
+		// The y1 coordinate of the tick mark
+		const lineticky1:number=8;
+		// 
+		// The x2 coordinate of the tick mark
+		const linetickx2:number=16;
+		// 
+		// The y2 coordinate of the tick mark
+		const lineticky2:number=8;
+		//  
+		// Set the line marker element attributes
+		mark.setAttribute("x1",`${linetickx1}`);
+		mark.setAttribute("y1",`${lineticky1}`);
+		mark.setAttribute("x2",`${linetickx2}`);
+		mark.setAttribute("y2",`${lineticky2}`);
+		//
+		//Return the svg element
+		return mark;
+	}
+
+	// 
+	//Draw the given label at the given index position
+	attribute_draw(
+		//The original position where the line segment start at point x
+		centerx:number,
+		//
+		//The original position where the line segment start at point y
+		centery:number,
+		//
+		//The lable that represents the properties in an entity 
+		label:string,
+		//
+		// 
+		index:number,
+		//
+		//The group that attach together the attributes and the line segments together 
+		gtext:Element,
+		
+	):void{
+		//
+		//Create the label text Element
+		const element:SVGTextElement = <SVGTextElement>document.createElementNS(svgns, "text");
+		// 
+		//Append the label text element to the gtext group element
+		gtext.appendChild(element);
+
+		//Set the x coordinate to the fixed value of x
+		element.setAttribute("x",`${centerx}`);
+		//
+		//Set the y coordinate to the radius plus 1 units from the center minus index times 4
+		element.setAttribute("y",`${centery-this.circleradius -4*index}`);
+		//
+		//Set the name of the label
+		element.textContent= label;
+		
+	}
+}

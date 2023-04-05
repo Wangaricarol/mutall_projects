@@ -13,7 +13,7 @@
         import run from "./script.js";
         //
         //Onload, run the default file
-        window.onload = () => run("../files/internship.md");
+        window.onload = () => run("../docs/compiled_schema.md");
         //
         //Make the run module visible outside this module
         window.run = run;
@@ -29,6 +29,7 @@
         <div class="title">
             <h1 class="mutald">MUTALL DATA COMPANY</h1>
             <nav class="navi">
+                <a class="file" href="#" onclick="run('../files/compiled_schema.md')">schema</a
                 <a class="file" href="#" onclick="run('../files/folder.md')">FOLDER</a>
                 <a class="file" href="#" onclick="run('../files/github.md')">GITHUB</a>
                 <a class="file" href="#" onclick="run('../files/npm.md')">NPM REGISTRY</a>
@@ -38,6 +39,7 @@
                 <a class="file" href="#" onclick="run('../files/migration.md')">MIGRATION</a>
                 <a class="file" href="#" onclick="run('../files/messenger.md')">MESSENGER</a>
                 <a class="file" href="#" onclick="run('../files/event.md')">EVENT</a>
+
             </nav>
         </div>
     </div>

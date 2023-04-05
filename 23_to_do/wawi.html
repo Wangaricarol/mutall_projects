@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        body{
+            background-size: cover;
+            background-image:linear-gradient(rgba(173, 163, 163, 0.6),transparent),
+            url("./images/pinkbck.png");
+            height:100dvh;
+            background-position: relative;
+            position: relative;
+            opacity: 60%;
+        }
+        .container{
+            display: flex;
+            flex-direction:row;
+            flex: 20% 80%;
+        }
+
+        header{
+            background-color: beige;
+            height: 10dvh;
+        }
+
+        .title{
+            padding-top: 1%;
+            font-weight: 900;
+        }
+        .aside{
+            flex:30%;
+            height:90dvh;
+        }
+        /*  */
+        .anim{
+            height:50dvh;
+            background-image: url(./images/pic1.jpg);
+            background-size: cover;
+            clip-path: circle(120px at 40% 60%);
+            /* animation: polygon 4s infinite; */
+        }
+        .anim { animation: 3s polygon reverse; }
+        .anim { animation: 5s polygon; }
+
+        @keyframes polygon {
+        0% { clip-path: polygon(0 0, 50% 0, 100% 0, 100% 50%, 100% 100%, 50% 100%, 0 100%, 0 50%); }
+        100% { clip-path:  polygon(50% 50%, 50% 25%, 50% 50%, 75% 50%, 50% 50%, 50% 75%, 50% 50%, 25% 50%); }
+        }
+
+        /* .anim { animation: 2s shutters reverse; }
+        .anim{ animation: 2s shutters; }
+
+            @keyframes shutters {
+            0% {
+                clip-path: polygon(0% 0%, 20% 0%, 20% 100%, 20% 100%, 20% 0%, 40% 0%, 40% 100%,
+                 40% 100%, 40% 0%, 60% 0%, 60% 100%, 60% 100%, 60% 0%, 80% 0%, 80% 100%, 80% 100%,
+                  80% 0%, 100% 0%, 100% 100%, 0% 100%);
+            }
+            100% {
+                clip-path: polygon(20% 0%, 20% 0%, 20% 100%, 40% 100%, 40% 0%, 40% 0%,
+                 40% 100%, 60% 100%, 60% 0%, 60% 0%, 60% 100%, 80% 100%, 80% 0%, 80% 0%,
+                  80% 100%, 100% 100%, 100% 0%, 100% 0%, 100% 100%, 20% 100%);
+            }
+            } */
+
+        /* @keyframes circle {
+            0% { clip-path: circle(10%); }
+            30% { clip-path: circle(15%); }
+            40% { clip-path: circle(5%); }
+        } */
+
+        .content{
+            flex:70%;
+            height: 90dvh;
+        }
+        svg{
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <center class="title">2023 portfolio</center>
+        
+    </header>
+    <div class="container">
+        <nav class="aside">
+            <section class="anim"></section>
+            <svg viewbox="0 0 20 10">
+                <h1>Wawira Caroline Wangari</h1>
+            </svg>
+            
+        </nav>
+        <div class="content">
+            <section>
+                <h1>Metavisio</h1>
+                Mutall Data Managers cant visualize the data models/class diagrams since 
+                after they upgraded from php7.1 to php 8.1 version.
+                <hr>
+                Do an application by the name metavisuo to aid in diagram generation.
+            </section>
+            <section>
+                <h1>Tracker</h1>
+                Use github to do a follow up of my day to day activities.  
+            </section>
+            <section>
+                <h1>Registrar</h1>
+                Congestion and time consumption as people queue to register in meetings
+                Build a registration system for self registration of members on arrival to the conference
+                In future think of building an entire management system apart from registration part
+                Think of how to assure security for members providing their details
+                Visit at least two conferences and call a person who have experience in conference management to aid in research on how they are managed.
+            </section>
+            <section>
+            <h1>Stock control system for the maasai cafe</h1> 
+            Stock control problem where they are recording manually 
+            and the store keeper can't trace properly how the commodities are used after supplies 
+            <h3>Build a stock control system for the Masai cafe</h3>
+        </section>
+            <section>
+                <h1>Website to market Maasai cafe</h1>
+                No advanced platform for advertising the cafe due to the dormant website.
+                Improve the Maasai cafe website to include services like;
+                (i)Outside catering
+                (ii)Food delivery
+                and many others
+            </section>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+<!-- <image class="img" href="./images/pic1.jpg" x="10" y="3">
+                <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="rotate"
+                from="0 10 40"
+                to="360 30 20"
+                dur="5s"
+                repeatCount="indefinite" />
+            </image> -->
+            <!-- <g class="anim">
+                <clip-path></clip-path>
+                <image href="./images/pic2.jpg" x="1" y="2"/> 
+                <animateMotion dur="5s" repeatCount="indefinite"
+                path="M 3, 10 a 5,5 0 1,0 1,0"/>
+                <animate attributeName="dy" values="0;5;0" dur="10s" repeatCount="indefinite"/>
+            </g> -->
+
+            <div class="a">
+                <img src="https://drive.google.com/uc?export=view&id=1yWHhNu4NVyPjqmbXOuDDjZL9cPcF2ulH">
+                <div class="a">
+            </div>

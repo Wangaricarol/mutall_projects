@@ -1,0 +1,28 @@
+
+//
+//
+displaying the svg data migration diagram
+class svg_migration_data extends outlook.terminal{
+	//
+	//class constructor
+	constructor(mother:main,file:string){
+		super(mother,file)
+	}
+	//
+	//show panels
+	public async show_panels(): Promise<void> {
+		//
+	}
+
+
+// 
+	//This is an event listener for moving the circle to the any random position within the view
+	entity_move_randomly(c:SVGCircleElement, zoomx:number,zoomy:number):void{
+		//
+		//1. Set the x position of the circle's center to a random position between 0 and zoomx 
+		c.setAttribute('cx', `${zoomx*Math.random()}`);
+		//
+		//2. Set the y position of the circle's center to a random position between 0 and zoomy 
+		c.setAttribute('cy', `${zoomy*Math.random()}`);
+		// 		
+	}

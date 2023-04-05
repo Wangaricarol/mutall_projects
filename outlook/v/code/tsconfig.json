@@ -1,0 +1,15 @@
+{
+  "extends": "../../../schema/v/code/tsconfig.json",
+  "compilerOptions": {
+    //"moduleResolution": "node"
+    "baseUrl": ".",
+    "paths": {
+      "md5": [
+        "node_modules/ts-md5/dist/md5" //The md5 base url
+      ],
+      "d3": [
+        "node_modules/@types/d3/index"
+      ]
+    }
+  }
+}
