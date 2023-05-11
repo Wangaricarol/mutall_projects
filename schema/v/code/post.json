@@ -1,1 +1,1 @@
-{"url":"http:\/\/localhost\/tracker\/v\/code\/","class":"app","cargs":"[\"tracker\"]","method":"available_products","margs":"[\"camilus\"]"}
+{"url":"http:\/\/localhost\/tracker\/v\/code\/","class":"database","cargs":"[\"meta_visuo\"]","method":"get_sql_data","margs":"[\"select\\n            entity.name,\\n            entity.x,\\n            entity.y\\n         from\\n            entity\\n            inner join dbase on entity.dbase = dbase.dbase\\n         where\\n            dbase.name = 'mutall_tracker'   \\n\\n        \"]"}

@@ -1,3 +1,17 @@
 # ignore all js files
 *.js
 solar_system/
+clipportfolio/
+code_diagrams/
+drag_drop/
+Error_rate_graph/
+image_icon/
+m_application/
+metavs_wrk/
+names animation/
+*nbproject/
+notes/
+twilio/
+practice_work/
+school dbs/
+metavisuo/

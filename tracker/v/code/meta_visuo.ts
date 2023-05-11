@@ -36,13 +36,13 @@ export class database extends schema.database{
 	// 
 	//class constructor.
 	constructor(
-        //The HTL tag where to hook the svg element for this dataase
+        //The HTML tag where to hook the svg element for this database
         public hook:HTMLElement,
         //
-        //This is the view from we lauched this metaviso database
+        //This is the view from which we launched this metavisuo database
         public view:outlook.view,
         //
-        //The schema database that is the extension of this meta-vusio version  
+        //The schema database that is the extension of this meta-visuo version  
         public dbase:schema.database
     ){
         super(dbase.static_dbase);
@@ -71,59 +71,126 @@ export class database extends schema.database{
         this.view.get_element('pan_up').onclick = ()=>this.pan('up');
         this.view.get_element('pan_down').onclick = ()=>this.pan('down');
         //
-        //Create the meta-visuon entities
+        //Pan the documents in view, depending on the selected keys
+        //Add a test key press event
+        onkeydown = (event => {
+        	const keycode:Array<Number>=[37,38,39,40];
+			//
+			//
+            keycode.forEach(keycode => {
+                //
+                //An event has some properties that we must first check if it is composed
+                if (event.isComposing || event.keyCode === keycode) {
+                    //
+                    //If the right arrow is pressed, pan to the right
+                    if (event.code === "ArrowRight") { 
+                        this.pan('right') };
+                    //
+                    //If the left arrow is pressed, pan leftwards
+                    if (event.code === "ArrowLeft") this.pan('left');
+                    //
+                    //If the up arrow is pressed, pan upwards
+                    if (event.code === "ArrowUp") this.pan('up');
+                    //
+                    //If the down arrow is pressed, pan downards
+                    if (event.code === "ArrowDown") this.pan('down');
+                }
+            });
+		});
+        //
+        //Create the meta-visuo entities
         this.entities = this.create_entities(dbase);
         //
-        //Create the meta_visuon rellations 
+        //Create the meta_visuo relations 
         this.relations = this.create_relations(dbase);
-        
 	}
 
-    //Zoming out is about increasing the zoom x an y componnets of this database
+    //Zoming out is about increasing the zoom x an y components of this database
     //by some fixed percentage, say 10%
     zoom(dir:'in'|'out'):void{
         //
         // 
         const sign = dir==='in' ? +1: -1;
         //
-        //Change the databse zooms
+        //Change the database zooms
         this.zoomx = this.zoomx + sign * this.zoomx * 10/100;
         this.zoomy = this.zoomy + sign * this.zoomy * 10/100;
         //
         this.svg.setAttribute("viewBox",`${[this.panx, this.pany, this.zoomx, this.zoomy]}`);
-		
     }
     // 
     //
     pan(dir:'up'|'left'|'right'|'down'):void{
         //
-        //Determin x, the amount by which to pan x, as 5% of 132
+        //Determine x, the amount by which to pan x, as 5% of 132
         const x = 5/100*132;
         //
         //Detemine y,the amount by which to pan y, as 5% of 64
         const y= 5/100*64;
         //
-        //Determine the pan direction and and make the necessary pan
-        //propertu changes
+        //Determine the pan direction and make the necessary pan
+        //property changes
         switch (dir) {
             case 'up':
                 //
                 //Change the pany by some positive amount (y)
-                this.pany  = this.pany + y; 
+                this.pany = this.pany + y; 
+                //
+                //Limit the diagram in view to the view,i.e., such that it is not hidden from the view
+                if (this.pany > 50) {
+                    //
+                    //Alert the user that the document might be getting out of view
+                    alert("This document is out of view, move down or zoom out to view it");
+                    //
+                    //Prevent the user from moving further out of view
+                    return;
+                }
                 break;
             case 'down':
                 //    
                //Change pany y with some negative amount (y)
-               this.pany= this.pany - y;
+                this.pany = this.pany - y;
+                //
+                //Limit the diagram in view to the view,i.e., such that it is not hidden from the view
+                if (this.pany < -50) {
+                    //
+                    //Alert the user that the document might be getting out of view
+                    alert("This document is out of view, move up or zoom out to view it");
+                    //
+                    //Prevent the user from moving further out of view
+                    return;
+                }
                break;
             case 'left':
                 //
                 //Change the pan x with some positive amount (x)
                 this.panx = this.panx + x;
+                //console.log(this.panx);
+                //
+                //Limit the diagram in view to the view,i.e., such that it is not hidden from the view
+                if (this.panx > 50) {
+                    //
+                    //Alert the user that the document might be getting out of view
+                    alert("This document is out of view, move right or zoom out to view it");
+                    //
+                    //Prevent the user from moving further out of view
+                    return;
+                }
                 break;
             case 'right':
                 //Change panx with some negative amount (x)
-                this.panx +=x;
+                this.panx = this.panx - x;
+                //
+                //Limit the diagram in view to the view,i.e., such that it is not hidden from the view
+                if (this.panx < -50) {
+                    //
+                    //Alert the user that the document might be getting out of view
+                    alert("This document is out of view, move left or zoom out to view it");
+                    //
+                    //Prevent the user from moving further out of view
+                    return;
+                }
+                // this.panx +=x;
                 break    
         }
         //
@@ -132,7 +199,7 @@ export class database extends schema.database{
 		
     }
 
-    //Create theh metavisuo entiies
+    //Create the metavisuo entiies
     create_entities(dbase:schema.database):{[index:string]:entity}{
         //
         //Start with an empty collection of entites
@@ -143,25 +210,25 @@ export class database extends schema.database{
 		//drawing them at the same time
 		for(const ename in dbase.entities){
 			//
-			//Create the meta-viso entity (with default, i.e., random, xand y coordinates)
+			//Create the meta-visuo entity (with default, i.e., random, xand y coordinates)
 			const ent = new entity(this, ename);
 
 			//Save the newly created entity to the metavisuo entities.
 			entities[ename] = ent;
 		}
         //
-        //Rteurn the constructed entities
+        //Return the constructed entities
         return entities; 
     }
 
     //
-    //Save the entity coordinates to the datanase
+    //Save the entity coordinates to the database
     async save():Promise<void>{
         //
-        //Collect all thelabel for saving the x and y coordinates to a databse
+        //Collect all the label for saving the x and y coordinates to a database
         const layouts:Array<quest.layout> = [...this.collect_labels()];
         //
-        //Execute the loading of layuots
+        //Execute the loading of layouts
         const result:'Ok'|string = await server.exec('questionnaire', [layouts], 'load_common',
              ['log.xml']);
         //
@@ -191,7 +258,7 @@ export class database extends schema.database{
     }
 
 	// 
-    //Draw the datanase entities and relations
+    //Draw the database entities and relations
 	async draw(): Promise<void>{
 		//
 		//Define the tick marker
@@ -199,6 +266,9 @@ export class database extends schema.database{
 		// 
 		//Draw the arrow marker
 		new marker.arrow(this.svg);
+        //
+        //Draw the arrow marker
+		new marker.chickenfoot(this.svg);
         //
         //Load the position data for the entities from the database
         await this.load_x_y_positions();
@@ -254,7 +324,7 @@ export class database extends schema.database{
 	//find out the home and away entity, use them to create our relations and save the relations.
 	create_relations(dbase:schema.database):Array<relation>{
         //
-        //Stary with an empty list or relations
+        //Start with an empty list or relations
         const relations:Array<relation> = [];
 		// 
 		//For each metavisuo entity...
@@ -452,10 +522,8 @@ namespace marker{
             const path:SVGPathElement = <SVGPathElement>document.createElementNS(svgns,"path");
             //
             // Draw the arrow path
-            path.setAttribute("d","M 8 8 L 0 4 L 0 12 z ");
-            //The class necessarly for styling arrow marker
-            path.setAttribute('class','arrow');
-            //
+            // path.setAttribute("d", "M 8 8 L 0 4 L 0 12 z");
+            path.setAttribute('d', 'M10 6, L8 6, M8 8, L10 8, M8 10, L10 10 M8 6 L 8 10 M4 8, L 8 8 M 7 6,L 7 10 M 6 6 L 6 10');
             return path;
         }
     }
@@ -466,7 +534,7 @@ namespace marker{
             super(svg)
         }
         // 
-        //Draw the tick mark 
+        //Draw the tick mark  
         get_path():SVGLineElement{
             //
             // Creating the line marker.
@@ -641,8 +709,10 @@ namespace marker{
             //
             //Get the points that define the polyline segments, in the format of e.g., 
             // ["3,40" "5,36" "9,32"]
-            const values:Array<string>=this.attributes.map((lables,i)=>{return `${this.x},
-                ${this.y-this.radius - 2*i}`});
+            const values: Array<string> = this.attributes.map((lables, i) => {
+                    return `${this.x},
+                ${this.y - this.radius - 2 * i}`;
+            });   
             // 
             //Join the values with a space separator 
             const points:string= values.join(" ");
@@ -758,7 +828,7 @@ namespace marker{
         //The entity to where the relation ends
         public dest:entity;
         // 
-        //The polyline that represents this relationhip
+        //The polyline that represents this relationship
         public polyline?:SVGElement;
         // 
         constructor(src:entity, dest:entity){

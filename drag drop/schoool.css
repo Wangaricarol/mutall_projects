@@ -1,9 +1,0 @@
-
-#static {
-    cursor: not-allowed;
-    fill: rgb(113, 111, 107);
-  }
-  #draggable {
-    cursor: move;
-    fill:aquamarine;
-  }
